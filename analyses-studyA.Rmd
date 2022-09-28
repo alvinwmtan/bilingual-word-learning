@@ -1,0 +1,67 @@
+---
+title: "Bilingual Word Learning - Study A Analyses"
+author: "Alvin Tan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(tidyverse)
+```
+
+```{r vocab, include=FALSE}
+get_vocab <- function(admins) {
+  admins |> 
+    add_trans_equiv() |> 
+    group_by(child_id, age, eng_prop, lang_grp, data_src) |> 
+    summarise(doublets = sum(is_doublet, na.rm=T),
+              vocab = sum(value, na.rm=T)) |> 
+    mutate(dominance = abs(50 - eng_prop) / 100,
+           prop_te = doublets / vocab,
+           child_id = as.character(child_id)) |> 
+    ungroup()
+}
+
+mr_vocab <- fetch_eng_spa_marchman_admins() |> get_vocab()
+hf_vocab <- fetch_eng_spa_hoff_admins() |> get_vocab()
+pl_vocab <- fetch_eng_fra_poulindubois_admins() |> get_vocab()
+mt_vocab <- fetch_eng_fra_mitchell_admins() |> get_vocab()
+ot_vocab <- fetch_eng_ire_otoole_admins() |> get_vocab()
+ar_vocab <- fetch_eng_heb_armonlotem_admins() |> get_vocab()
+
+ts_vocab <- read_csv("data/other/keepers_ws_TE_final.csv") |>
+  mutate(prop_te = 2 * number_of_te / word_vocab) |> 
+  select(child_id = baby_id,
+         age = age_months_binned,
+         eng_prop = lang_exp_eng,
+         prop_te) |> 
+  mutate(data_src = "tsui",
+         lang_grp = "Eng-Fra",
+         dominance = abs(50 - eng_prop) / 100,
+         child_id = as.character(child_id))
+
+ct_vocab <- read_csv("data/other/trilingual_vocab.csv") |> 
+  filter(Lang_Group == "Bilingual") |> 
+  select(child_id = Sub_ID,
+         age = Age_Months,
+         eng_prop = Lang_Exp_Eng,
+         prop_te = Prop_TEs) |> 
+  mutate(data_src = "cote",
+         lang_grp = "Eng-Fra",
+         dominance = abs(50 - eng_prop) / 100,
+         child_id = as.character(child_id))
+
+all_vocab <- bind_rows(mr_vocab, hf_vocab, 
+                       pl_vocab, mt_vocab, 
+                       ts_vocab, ct_vocab,
+                       ot_vocab, ar_vocab) |> 
+    mutate(age_t = (age - mean(age, na.rm=T)) / sd(age, na.rm=T),
+           dom_t = (dominance - mean(dominance, na.rm=T)) / sd(dominance, na.rm=T),
+           age_binned = cut(age, breaks = c(15,20,25,30,35,50)),
+           dominance_binned = cut(dominance, breaks = c(-1e-16, 0.1, 0.3, 0.5)))
+
+saveRDS(all_vocab, "data/other/all_vocab.rds")
+```
+

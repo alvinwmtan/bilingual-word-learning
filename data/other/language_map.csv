@@ -1,0 +1,82 @@
+iso_name,wordbank,childes,snowball,hunspell,hunspell source,espeak,espeak-ng
+Danish,Danish,dan,danish,da_DK,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,da,da
+English,English (American),eng,english,en_US,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,en-us,en-us
+English,English (Australian),eng,english,en_AU,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,en,en
+English,English (British),eng,english,en_GB,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,en,en
+English,English (Irish),eng,english,en_GB,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,en,en
+French,French (French),fra,french,fr_FR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,fr,fr
+French,French (Quebecois),fra,french,fr_FR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,fr,fr
+German,German,deu,german,de_DE,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,de,de
+Italian,Italian,ita,italian,it_IT,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,it,it
+Modern Greek,Greek (Cypriot),ell,greek,el_GR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,el,el
+Norwegian,Norwegian,nor,norwegian,no_NO,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,no,nb
+Portuguese,Portuguese (European),por,portuguese,pt_PT,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,pt-pt,pt
+Russian,Russian,rus,russian,ru_RU,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,ru,ru
+Spanish,Spanish (European),spa,spanish,es_ES,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,es,es
+Spanish,Spanish (Mexican),spa,spanish,es_MX,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,es-la,es-419
+Swedish,Swedish,swe,swedish,sv_SE,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,sv,sv
+Turkish,Turkish,tur,turkish,tr,https://github.com/titoBouzout/Dictionaries,tr,tr
+Croatian,Croatian,hrv,,hr_HR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,hr,hr
+Czech,Czech,ces,,cs_CZ,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,cs,cs
+Mandarin Chinese,Mandarin (Beijing),zho,no need,no need,,zh,cmn-Latn-pinyin
+Mandarin Chinese,Mandarin (Taiwanese),zho,no need,no need,,zh,cmn-Latn-pinyin
+Yue Chinese,Cantonese,yue,no need,no need,,zh-yue,yue
+Hebrew,Hebrew,heb,,he_IL,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,he
+Korean,Korean,kor,,ko,https://github.com/spellcheck-ko/hunspell-dict-ko/releases,,ko
+Catalan,,cat,catalan,ca_ES,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,ca,ca
+Dutch,,nld,dutch,nl_NL,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,nl,nl
+Hungarian,,hun,hungarian,hu_HU,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,hu,hu
+Indonesian,,ind,indonesian,id_ID,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,id,id
+Romanian,,ron,romanian,ro_RO,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,ro,ro
+Tamil,,tam,tamil,ta,https://github.com/thamizha/thamizha-solthiruthi,ta,ta
+Afrikaans,,afr,,af_ZA,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,af,af
+Arabic,,ara,arabic,ar,https://github.com/titoBouzout/Dictionaries,,ar
+Basque,,eus,basque,eu,https://github.com/titoBouzout/Dictionaries,,eu
+Finnish,,,finnish,fi_FI,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,fi,fi
+Hindi,,,hindi,hi_IN,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,hi,hi
+Icelandic,,isl,,is,https://github.com/titoBouzout/Dictionaries,is,is
+Irish,Irish,gle,irish,ga_IE,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,ga
+Latvian,Latvian,,,lv_LV,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,lv,lv
+Polish,,pol,,pl_PL,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,pl,pl
+Serbian,,srp,,sr,https://github.com/titoBouzout/Dictionaries,sr,sr
+Slovak,Slovak,,,sk_SK,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,sk,sk
+Swahili,Kiswahili,,,sw_KE,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,sw,sw
+Welsh,,cym,,cy_GB,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,cy,cy
+Albanian,,,,sq_AL,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,sq,sq
+American Sign Language,American Sign Language,,,,,,
+Armenian,,,,hy,https://github.com/titoBouzout/Dictionaries,hy,hy
+Bosnian,,,,,,bs,bs
+British Sign Language,British Sign Language,,,,,,
+Esperanto,,,,eo_13,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,eo,eo
+Estonian,,est,,et_EE,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,et
+Gaelic,,gla,,gd_GB,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,gd
+Galician,,glg,,gl_ES,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,
+Georgian,,,,ka,https://github.com/wooorm/dictionaries,ka,ka
+Giryama,Kigiriama,,,,,,
+Hawaiian,,haw,,,,,haw
+Jamaican,,jam,,,,,
+Japanese,,jpn,,,,,ja
+Javanese,,jav,,,,,
+Kannada,,,,,,kn,kn
+Kikuyu,,kik,,,,,
+Kurdish,,,,ku_TR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,ku,ku
+Latin,,,,la,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,la,la
+Lithuanian,,,lithuanian,lt_LT,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,lt
+Macedonian,,,,mk_MK,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,mk,mk
+Manado Malay,,xmm,,,,,
+Marathi,,mar,,mr_IN,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,mr
+Minnan,,nan,,,,,
+Nepali,,,nepali,ne_NP,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,ne
+Northwest Alaska Inupiatun,,esk,,,,,
+Persian,,fas,,fa,https://github.com/titoBouzout/Dictionaries,,fa
+Portuguese,,,,pt_BR,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,pt,pt-br
+Quechua,,que,,,,,qu
+Slovenian,,slv,,sl_SI,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,sl
+Southern Sotho,,sot,,st_ZA,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,
+Tagalog,,tgl,,tl_PH,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,
+Tamasheq,,taq,,,,,
+Thai,,tha,,th_TH,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,,th
+Undetermined,,und,,,,,
+Vietnamese,,,,vi_VN,http://ftp.snt.utwente.nl/pub/software/openoffice/contrib/dictionaries/,vi,vi
+Yau (Morobe Province),,yuw,,,,,
+Yiddish,,yid,,yi,https://github.com/alephreish/hunspell-yi,,

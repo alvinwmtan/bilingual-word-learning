@@ -1,0 +1,132 @@
+---
+title: "Bilingual Word Learning - Study 1 Analyses"
+author: "Alvin Tan"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(metafor)
+library(meta)
+```
+
+## Data loading and descriptives
+Load data
+```{r import, include=FALSE}
+data_df <- read_csv("data/other/ma_data.csv") |>
+  select(!(`Publication Year`:Url)) |>
+  mutate(`%TE` = as.double(`%TE`),
+         `%TE(either)` = as.double(`%TE(either)`),
+         Measure = fct_recode(`C/P`, "Comprehension" = "C", "Production" = "P"),
+         `Study name` = sub("–", "-", `Study name`))
+```
+
+Basic descriptives
+```{r descriptives}
+num_te_discuss <- sum(data_df$`Discusses TEs?`, na.rm = TRUE)
+num_te_topic <- sum(data_df$`TE topic relevant?`, na.rm = TRUE)
+
+langs_list <- list()
+for (i in data_df$Langs) {
+  langs_list <- c(langs_list, str_split(i, ","))
+}
+langs_list <- langs_list |> unlist()
+langs_hist <- langs_list |> table() |> as_tibble()
+
+data_inc <- data_df |> 
+  filter(!is.na(`SD(%TE)`))
+num_data_inc <- data_inc |> nrow()
+```
+
+Language representation histogram
+```{r lang-hist}
+lh <- ggplot(data = langs_hist, aes(x = reorder(langs_list, -n), y = n)) +
+  geom_col() +
+  xlab("Language")
+lh
+```
+
+## Meta-analysis
+```{r meta-dir}
+if (!file.exists("models/meta-analysis")) dir.create("models/meta-analysis", recursive = TRUE)
+```
+
+```{r meta-prep}
+data_inc <- data_inc |>
+  mutate(is_cdi = `Vocab instrument` == "CDI",
+         age_ctr = `Mean age` - mean(`Mean age`),
+         Lab = as.factor(Lab),
+         `Vocab instrument` = fct_infreq(data_inc$`Vocab instrument`),
+         `Measure (Instrument)` = factor(glue("{Measure} ({`Vocab instrument`})"),
+                                         levels = c("Comprehension (CCT)",
+                                                    "Comprehension (CDI)",
+                                                    "Comprehension (PPVT)",
+                                                    "Production (CDI)",
+                                                    "Production (Recording)")),
+         `Ppt grp` = as.factor(`Ppt grp`),
+         Variance = `SD(%TE(either))` ^ 2,
+         se_var = `SD(%TE(either))` ^ 2 / N,
+         dominance = (50 - `Mean L2 exp`) / 100,
+         dom_ctr = dominance - mean(dominance, na.rm=T))
+
+ma_frame <- metamean(n = N,
+                     mean = `%TE(either)`,
+                     sd = `SD(%TE(either))`,
+                     studlab = `Study name`,
+                     data = data_inc,
+                     sm = "MRAW",
+                     fixed = FALSE,
+                     random = TRUE,
+                     method.tau = "REML",
+                     title = "Proportion of TEs",
+                     subgroup = `Measure (Instrument)`)
+```
+
+```{r meta-models, warning=FALSE}
+ma_base <- rma.mv(yi = `%TE(either)`, 
+                  V = se_var, 
+                  slab = `Study name`,
+                  data = data_inc,
+                  random = ~ 1 | `Report name`/`Ppt grp`/`Study name`, 
+                  method = "REML")
+saveRDS(ma_base, "models/meta-analysis/ma_base.rds")
+
+ma_age <- rma.mv(yi = `%TE(either)`, 
+                 V = se_var, 
+                 slab = `Study name`,
+                 data = data_inc |> filter(`Measure (Instrument)` == "Production (CDI)"),
+                 random = ~ 1 | `Report name`/`Ppt grp`/`Study name`, 
+                 method = "REML",
+                 mods = ~ age_ctr)
+saveRDS(ma_age, "models/meta-analysis/ma_age.rds")
+
+ma_age_dom <- rma.mv(yi = `%TE(either)`, 
+                     V = se_var, 
+                     slab = `Study name`,
+                     data = data_inc |> filter(`Measure (Instrument)` == "Production (CDI)"),
+                     random = ~ 1 | `Report name`/`Ppt grp`/`Study name`, 
+                     method = "REML",
+                     mods = ~ age_ctr + dom_ctr)
+saveRDS(ma_age_dom, "models/meta-analysis/ma_age_dom.rds")
+```
+
+```{r meta-plot, include=FALSE}
+pdf(file = "index/figure/ma_base.pdf",
+    width = 11,
+    height = 10.5)
+
+# hacky transfer of nested meta-analysis values into the metafor model for 
+# nicer plots
+ma_frame$TE.random <- ma_base$b
+ma_frame$seTE.random <- ma_base$se
+ma_frame$lower.random <- ma_base$ci.lb
+ma_frame$upper.random <- ma_base$ci.ub
+
+forest(ma_frame, sortvar = TE, subgroup = F, 
+       print.I2 = F, print.tau2 = F, print.pval.Q = F,
+       test.subgroup.random = F)
+
+dev.off()
+```

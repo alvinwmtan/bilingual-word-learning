@@ -1,0 +1,4 @@
+Model,Predictors
+Model 1,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) + (1|child\_id) + (1|item\_id)}
+Model 2,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) * te\_known + (1|child\_id) + (1|item\_id)}
+Model 3,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) * te\_known * phon\_overlap + (1|child\_id) + (1|item\_id)}
