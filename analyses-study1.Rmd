@@ -15,7 +15,7 @@ library(meta)
 ## Data loading and descriptives
 Load data
 ```{r import, include=FALSE}
-data_df <- read_csv("data/other/ma_data.csv") |>
+data_df <- read_csv("data/misc/ma_data.csv") |>
   select(!(`Publication Year`:Url)) |>
   mutate(`%TE` = as.double(`%TE`),
          `%TE(either)` = as.double(`%TE(either)`),

@@ -30,7 +30,7 @@ add_trans_equiv <- function(df) {
   df |> left_join(te, by = c("child_id", "language", "age", "uni_lemma", "value"))
 }
 
-lang_map <- read_csv("data/other/language_map.csv")
+lang_map <- read_csv("data/misc/language_map.csv")
 
 convert_lang_espeak <- function(lang) {
   lang_map |> filter(wordbank == lang) |> pull(`espeak-ng`)
@@ -82,14 +82,13 @@ get_phons <- function(words, lang) {
 
 get_spec_ipa <- function(lang) {
   # get IPA for a whole form spec
-  lang_norm <- gsub('[ ]', '_', gsub('[()]', '', lang))
-  spec <- read_csv(glue("data/cdi_specs/[{lang_norm}_WS].csv"))
+  spec <- get_item_data(lang, "WS")
   spec |>
-    filter(type == "word") |>
-    mutate(ipa = get_phons(definition, lang),
+    filter(item_kind == "word") |>
+    mutate(ipa = get_phons(item_definition, lang),
            length_phon = sapply(ipa, str_length)) |>
-    select(item_id = itemID, category, definition, uni_lemma, ipa, length_phon) |>
-    mutate(language = lang)
+    select(language, item_id, category,
+           item_definition, uni_lemma, ipa, length_phon)
 }
 
 get_overlap <- function(df) {

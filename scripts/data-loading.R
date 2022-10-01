@@ -1,6 +1,6 @@
 # new data loading script
 
-cat_to_lc <- read_csv("data/other/categories.csv")
+cat_to_lc <- read_csv("data/misc/categories.csv")
 
 get_lang_data <- function(language, ds_origin, oth_lang,
                           lang_grp, data_src, db_args = NULL) {
@@ -52,7 +52,31 @@ fetch_eng_spa_marchman_admins <- function(db_args = NULL) {
                        "Spanish", "eng_spa", "marchman", db_args)
   spa <- get_lang_data("Spanish (Mexican)", "Marchman Dallas Bilingual",
                        "Spanish", "eng_spa", "marchman", db_args)
-  rbind(eng, spa)
+  eng_spa <- rbind(eng, spa)
+
+  for (s in unique(eng_spa |>
+                   filter(language == "English (American)") |>
+                   pull(child_id))) {
+    p_rows = which(eng_spa$child_id == s)
+    for (age in unique(eng_spa[p_rows,] |>
+                       filter(language=="English (American)") |>
+                       pull(age))) {
+      s_eng_prop = eng_spa[which(eng_spa$child_id == s &
+                                   eng_spa$age == age &
+                                   eng_spa$language == "English (American)"),] |>
+        pull(eng_prop) |> unique()
+      sp_ind = which(eng_spa$child_id == s &
+                       abs(eng_spa$age - age) <= 1 & # fuzzy age match (±1 from English CDIAge)
+                       eng_spa$language == "Spanish (Mexican)")
+      if (length(s_eng_prop) != 0) {
+        eng_spa[sp_ind,]$eng_prop = s_eng_prop
+        eng_spa[sp_ind,]$oth_prop = 100 - s_eng_prop
+      } else {
+        eng_spa[sp_ind,c("eng_prop","oth_prop")] = NA
+      }
+    }
+  }
+  eng_spa
 }
 
 fetch_eng_spa_hoff_admins <- function(db_args = NULL) {

@@ -102,44 +102,37 @@ saveRDS(mr_complete, "outputs/mr_complete.rds")
 
 ## Modelling
 Model using brms
-```{r model-dir}
-if (!file.exists("models/modelling")) dir.create("models/modelling", recursive = TRUE)
-```
-
 ```{r model-mr}
 mr_model_base <- run_model(mr_complete, base_formula)
-saveRDS(mr_model_base, "models/modelling/mr_model_base.rds")
 mr_model_te <- run_model(mr_complete, te_formula)
-saveRDS(mr_model_te, "models/modelling/mr_model_te.rds")
 mr_model_full <- run_model(mr_complete, full_formula)
-saveRDS(mr_model_full, "models/modelling/mr_model_full.rds")
 ```
 
 ```{r model-hf}
 hf_model_base <- run_model(hf_complete, base_formula)
-saveRDS(hf_model_base, "models/modelling/hf_model_base.rds")
 hf_model_te <- run_model(hf_complete, te_formula)
-saveRDS(hf_model_te, "models/modelling/hf_model_te.rds")
 hf_model_full <- run_model(hf_complete, full_formula)
-saveRDS(hf_model_full, "models/modelling/hf_model_full.rds")
 ```
 
 ```{r model-pd}
 pl_model_base <- run_model(pl_complete, base_formula)
-saveRDS(pl_model_base, "models/modelling/pl_model_base.rds")
 pl_model_te <- run_model(pl_complete, te_formula)
-saveRDS(pl_model_te, "models/modelling/pl_model_te.rds")
 pl_model_full <- run_model(pl_complete, full_formula)
-saveRDS(pl_model_full, "models/modelling/pl_model_full.rds")
 ```
 
 ```{r model-mt}
 mt_model_base <- run_model(mt_complete, base_formula)
-saveRDS(mt_model_base, "models/modelling/mt_model_base.rds")
 mt_model_te <- run_model(mt_complete, te_formula)
-saveRDS(mt_model_te, "models/modelling/mt_model_te.rds")
 mt_model_full <- run_model(mt_complete, full_formula)
-saveRDS(mt_model_full, "models/modelling/mt_model_full.rds")
+```
+
+```{r model-mr-pred}
+mr_pred <- predict(mr_model_base, re_formula = NA)
+mr_complete_pred <- mr_complete |>
+  cbind(mr_pred) |>
+  mutate(freq_t_binned = cut(freq_t, c(-Inf,-0.5,0,0.5,Inf)),
+         lang_prop_binned = cut(lang_prop, c(0, 40, 60, 100)))
+saveRDS(mr_complete_pred, "outputs/mr_complete_pred.rds")
 ```
 
 Extract coefficients
@@ -149,7 +142,7 @@ hf_mp_b <- get_model_posteriors(hf_model_base, "Eng-Spa (Hoff)")
 pl_mp_b <- get_model_posteriors(pl_model_base, "Eng-Fra (Poulin-Dubois)")
 mt_mp_b <- get_model_posteriors(mt_model_base, "Eng-Fra (Mitchell)")
 
-mp_b <- rbind(md_mp_b, hf_mp_b, pd_mp_b, bh_mp_b)
+mp_b <- rbind(mr_mp_b, hf_mp_b, pl_mp_b, mt_mp_b)
 saveRDS(mp_b, "outputs/mp_b.rds")
 mp_b_plot <- plot_coefs(mp_b)
 ```
@@ -160,18 +153,18 @@ hf_mp_t <- get_model_posteriors(hf_model_te, "Eng-Spa (Hoff)")
 pl_mp_t <- get_model_posteriors(pl_model_te, "Eng-Fra (Poulin-Dubois)")
 mt_mp_t <- get_model_posteriors(mt_model_te, "Eng-Fra (Mitchell)")
 
-mp_t <- rbind(md_mp_t, hf_mp_t, pd_mp_t, bh_mp_t)
+mp_t <- rbind(mr_mp_t, hf_mp_t, pl_mp_t, mt_mp_t)
 saveRDS(mp_t, "outputs/mp_t.rds")
 mp_t_plot <- plot_coefs(mp_t)
 ```
 
-```{r coefs-te}
+```{r coefs-full}
 mr_mp_f <- get_model_posteriors(mr_model_full, "Eng-Spa (Marchman)")
 hf_mp_f <- get_model_posteriors(hf_model_full, "Eng-Spa (Hoff)")
 pl_mp_f <- get_model_posteriors(pl_model_full, "Eng-Fra (Poulin-Dubois)")
 mt_mp_f <- get_model_posteriors(mt_model_full, "Eng-Fra (Mitchell)")
 
-mp_f <- rbind(md_mp_f, hf_mp_f, pd_mp_f, bh_mp_f)
+mp_f <- rbind(mr_mp_f, hf_mp_f, pl_mp_f, mt_mp_f)
 saveRDS(mp_f, "outputs/mp_f.rds")
 mp_f_plot <- plot_coefs(mp_f)
 ```
@@ -179,13 +172,9 @@ mp_f_plot <- plot_coefs(mp_f)
 Lexical class analysis
 ```{r lc-full}
 mr_lc_models_full <- run_lc_models(mr_complete, full_formula)
-saveRDS(mr_lc_models_full, "models/modelling/mr_lc_models_full.rds")
 hf_lc_models_full <- run_lc_models(hf_complete, full_formula)
-saveRDS(hf_lc_models_full, "models/modelling/hf_lc_models_full.rds")
 pl_lc_models_full <- run_lc_models(pl_complete, full_formula)
-saveRDS(pl_lc_models_full, "models/modelling/pl_lc_models_full.rds")
 mt_lc_models_full <- run_lc_models(mt_complete, full_formula)
-saveRDS(mt_lc_models_full, "models/modelling/mt_lc_models_full.rds")
 ```
 
 ```{r lc-coefs}
@@ -194,7 +183,7 @@ hf_mp_lc_full <- get_lc_models_posteriors(hf_lc_models_full, "Eng-Spa (Hoff)")
 pl_mp_lc_full <- get_lc_models_posteriors(pl_lc_models_full, "Eng-Fra (Poulin-Dubois)")
 mt_mp_lc_full <- get_lc_models_posteriors(mt_lc_models_full, "Eng-Fra (Mitchell)")
 
-mp_lc_f <- rbind(mr_mp_lc_full, hf_mp_lc_full, pl_mp_lc_full, bh_mp_lc_full)
+mp_lc_f <- rbind(mr_mp_lc_full, hf_mp_lc_full, pl_mp_lc_full, mt_mp_lc_full)
 saveRDS(mp_lc_f, "outputs/mp_lc_f.rds")
 ```
 

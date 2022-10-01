@@ -14,23 +14,68 @@ full_formula <- formula(value ~
                           (te_known * overlap_t) +
                           (1|child_id) + (1|lang_item_id))
 
-run_model <- function(data, formula) {
-  brm(formula = formula,
-      data = data,
-      family = 'bernoulli',
-      prior = set_prior('horseshoe(3)'),
-      iter = 3000,
-      chains = 4,
-      cores = 4,
-      control = list(adapt_delta = 0.85),
-      backend = "cmdstanr")
+data_src_abbrevs <- c("marchman" = "mr",
+                      "hoff" = "hf",
+                      "poulin-dubois" = "pl",
+                      "mitchell" = "mt")
+
+make_filename <- function(data, formula, infix = "model") {
+  data_src <- data_src_abbrevs[data |> pull(data_src) |> head(1)]
+  if("overlap_t" %in% (terms(formula) |> attr("term.labels"))) {
+    form_name <- "full"
+  } else if("te_known" %in% (terms(formula) |> attr("term.labels"))) {
+    form_name <- "te"
+  } else {form_name <- "base"}
+  glue("{data_src}_{infix}_{form_name}.rds")
 }
 
-run_lc_models <- function(data, formula) {
+run_model <- function(data, formula, cache = TRUE,
+                      cache_path = here("models/modelling")) {
+  full_path <- here(cache_path, make_filename(data, formula))
+
+  if(file.exists(full_path)) {
+    message("Reading from cache")
+    return(readRDS(full_path))
+  }
+
+  message("Running model")
+  model <- brm(formula = formula,
+               data = data,
+               family = 'bernoulli',
+               prior = set_prior('horseshoe(3)'),
+               iter = 3000,
+               chains = 4,
+               cores = 4,
+               control = list(adapt_delta = 0.85),
+               backend = "cmdstanr")
+
+  if(cache) {
+    if(!file.exists(cache_path)) dir.create(cache_path, recursive = TRUE)
+    saveRDS(model, full_path)
+  }
+  model
+}
+
+run_lc_models <- function(data, formula, cache = TRUE,
+                          cache_path = here("models/modelling")) {
+  full_path <- here(cache_path,
+                    make_filename(data, formula, infix = "lc_models"))
+
+  if(file.exists(full_path)) {
+    message("Reading from cache")
+    return(readRDS(full_path))
+  }
+
   models <- list()
   for (c in cats) {
-    models[c] <- run_model(data |> filter(lexical_class == c), formula) |>
+    models[c] <- run_model(data |> filter(lexical_class == c),
+                           formula, cache = FALSE) |>
       list()
+  }
+
+  if(cache) {
+    if(!file.exists(cache_path)) dir.create(cache_path, recursive = TRUE)
+    saveRDS(model, full_path)
   }
   models
 }
