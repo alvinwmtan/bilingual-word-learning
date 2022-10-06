@@ -1,0 +1,69 @@
+# Study A: Modelling TE pairs {#te-pairs}
+In this study, we investigated how age and language exposure contribute to TE production.
+Specifically, we tested the hypotheses that older children produce more TE pairs, and that children with more balanced language exposure produce more TE pairs.
+We examined this by conducting an analysis on existing CDI datasets containing both age and language exposure information.
+
+## Datasets
+```{r datasets, out.width="100%"}
+datasets <- read_csv("data/misc/datasets.csv", show_col_types = FALSE)
+datasets |> 
+  rename(`$N_P$` = Ppts,
+         `$N_A$` = Admins) |> 
+  knitr::kable(caption = "Descriptive statistics of datasets used in Study A. $N_P$: number of participants; $N_A$: number of administrations.", 
+               booktabs = T,
+               linesep = c('', '', '', '\\addlinespace'),
+               escape = F) |> 
+  kable_styling(font_size = 9,
+                htmltable_class = 'lightable-minimal')
+```
+For this study, we used a superset of the bilingual datasets used in Study 2, as item-level data and frequency information were not required; it sufficed for the datasets to include information about children's TE pairs. 
+As such, we included two datasets that did not have item-level data [associated with @coteMultilingualToddlersVocabulary2020; @tsuiAreTranslationEquivalents2022] and two datasets that did not have sufficient corresponding child-directed speech data in CHILDES [@macwhinneyCHILDESProjectTools2000], a repository of child language [associated with @armon-lotemCDIStudyBilingual2017; @otooleParentReportEarly2017].
+The final set of datasets amounted to `r datasets |> pull(Admins) |> sum() |> apa_num(format="d")` administrations across `r datasets |> pull(Ppts) |> sum() |> apa_num(format="d")` children.
+The details of the datasets are shown in Table \@ref(tab:datasets). 
+
+## Methods
+### Data processing
+We first cleaned all the data and conformed them to the same format.
+We calculated the outcome variable, proportion of TEs, by dividing the number of TEs known by the total vocabulary of the child.
+Language exposure was captured in disparate ways across datasets, so we standardised these values to a proportion score (range [0, 100]), reflecting the relative amounts of language input in the child's two languages.
+We then calculated the dominance score for each administration, operationalised as $\textup{dom} = (50 - \textup{\% non-dominant exposure}) / 100$ as in the meta-analysis.
+Age and dominance were then standardised (mean-centred and scaled).
+
+### Analysis
+We modelled the data using a generalised linear mixed model with proportion of TEs as the outcome variable, and age and dominance as additive fixed effects, along with their interaction effect, and nested random effects of dataset and participant. 
+Modelling was conducted using the `lme4` package [@batesFittingLinearMixedeffects2015] in R.
+
+## Results
+```{r vocab}
+all_vocab <- readRDS("data/misc/all_vocab.rds")
+vocab_model <- glmer(prop_te ~ age_t * dom_t + (1|data_src/child_id), 
+                     data = all_vocab, 
+                     weights = vocab,
+                     family = "binomial")
+vocab_coefs <- vocab_model |> tidy(conf.int = TRUE)
+```
+
+(ref:vocab-plot-cap) Proportion of TEs as a function of age and dominance.
+```{r vocab-plot, out.width="100%", fig.cap="(ref:vocab-plot-cap)"}
+ggplot(data = all_vocab,
+       aes(x = dominance, y = prop_te, col = age)) +
+  geom_point(alpha = .5)+
+  geom_smooth(aes(group = age), 
+              data = all_vocab |> mutate(age = as.numeric(age_binned)*5+10), 
+              method = "glm",
+              se = F) +
+  labs(x = "Dominance",
+       y = "Proportion of TEs",
+       col = "Age") +
+  scale_color_distiller(palette = "BuPu")
+```
+
+The plot of proportion of TEs is shown in Figure \@ref(fig:vocab-plot). 
+Age was a significant predictor of proportion of TEs ($\beta =$ `r vocab_coefs$estimate[2]` [`r vocab_coefs$conf.low[2]`, `r vocab_coefs$conf.high[2]`], $p$ `r vocab_coefs$p.value[2] |> apa_p(add_equals=T)`). 
+Dominance also significantly negatively predicted proportion of TEs ($\beta =$ `r vocab_coefs$estimate[3]` [`r vocab_coefs$conf.low[3]`, `r vocab_coefs$conf.high[3]`], $p$ `r vocab_coefs$p.value[3] |> apa_p(add_equals=T)`).
+There was also an interaction effect between age and dominance ($\beta =$ `r vocab_coefs$estimate[4]` [`r vocab_coefs$conf.low[4]`, `r vocab_coefs$conf.high[4]`], $p$ `r vocab_coefs$p.value[4] |> apa_p(add_equals=T)`), suggesting that the effect of age is greater when dominance is greater. 
+
+## Discussion
+The results of this analysis support the hypotheses that older children and children with more balanced language exposure produce more TE pairs. 
+In particular, the finer level of data provided additional power, and was thus able to elucidate the effect of dominance that was not present in the meta-analysis.
+However, the effect of age is confounded by the baseline problem, emphasising the need for other approaches, such as that explored in Study 2.
