@@ -1,0 +1,111 @@
+---
+title             : "The role of translation equivalents in bilingual word learning"
+shorttitle        : "Translation equivalents"
+
+author: 
+  - name          : "Alvin W. M. Tan"
+    affiliation   : "1"
+    corresponding : yes    # Define only one corresponding author
+    # address       : "Postal address"
+    email         : "tanawm@stanford.edu"
+    role:         # Contributorship roles (e.g., CRediT, https://casrai.org/credit/)
+      - "Conceptualization"
+      - "Methodology"
+      - "Formal Analysis"
+      - "Writing - Original Draft Preparation"
+      - "Writing - Review & Editing"
+  - name          : "Virginia A. Marchman"
+    affiliation   : "1"
+    role:
+      - "Writing - Review & Editing"
+      - "Supervision"
+  - name          : "Michael C. Frank"
+    affiliation   : "1"
+    role:
+      - "Conceptualization"
+      - "Writing - Review & Editing"
+      - "Supervision"
+
+affiliation:
+  - id            : "1"
+    institution   : "Stanford University"
+
+authornote: |
+  Alvin W. M. Tan, Department of Psychology, Stanford University, ORCID 0000-0001-5551-7507.
+  Virginia A. Marchman, Department of Psychology, Stanford University, ORCID 0000-0001-7183-6743.
+  Michael C. Frank, Department of Psychology, Stanford University, ORCID 0000-0002-7551-4378.
+
+abstract: | 
+  Bilingual environments present an interesting context for word learning, notably due to the existence of translation equivalents (TEs)---words in different languages that share similar meanings. Understanding how TEs are learnt may give us insight into mechanisms underlying word learning in young children. However, studying TE learning is often confounded by the fact that increases in the overall size of vocabulary with age leads to a greater set of opportunities for learning TEs. As such, we employed an item-level analysis, which controls for the age trajectory of each item independently. We found that knowing a word's TE increased the likelihood of knowing that word itself for younger children, and for TEs that are more similar phonologically. These results corroborate earlier findings that children with smaller vocabularies have a preference towards acquiring TEs, and that TEs which are cognates are acquired earlier. Thus, TEs may provide an alternative source of information for younger children, thereby allowing bilingual children to bootstrap their early word learning in one language using their knowledge of the other language.
+  
+keywords          : "translation equivalents, bilingualism, word learning, standard model, baseline problem"
+# wordcount         : "X"
+
+bibliography      : "index/bib/thesis.bib"
+annotate_references: yes
+nocite: |
+  @coteMultilingualToddlersVocabulary2020
+  @caselliParoleFrasiNel2011
+
+floatsintext      : no
+linenumbers       : no
+draft             : no
+mask              : no
+
+figurelist        : no
+tablelist         : no
+footnotelist      : no
+
+mainfont          : "CMU Serif"
+
+classoption       : "man"
+output            : papaja::apa6_pdf
+---
+
+```{r setup, include = FALSE}
+library(papaja)
+library(Matrix)
+library(tidyverse)
+library(here)
+library(kableExtra)
+library(broom.mixed)
+library(lme4)
+library(colorspace)
+library(corrplot)
+r_refs("r-references.bib")
+knitr::opts_knit$set(root.dir = './')
+knitr::opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  error = FALSE,
+  echo = FALSE,
+  dev = "cairo_pdf")
+extrafont::loadfonts()
+walk(list.files("scripts", pattern = "*.R$", full.names = TRUE), source)
+```
+
+```{r analysis-preferences}
+# Seed for random number generation
+set.seed(42)
+knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
+```
+
+
+<!-- We used `r cite_r("r-references.bib")` for all our analyses. -->
+
+```{r child = "index/01-introduction.Rmd"}
+```
+
+```{r child = "index/02-study.Rmd"}
+```
+
+```{r child = "index/03-discussion.Rmd"}
+```
+
+\newpage
+
+# References
+References marked with an asterisk indicate studies included in the meta-analysis.
+
+::: {#refs custom-style="Bibliography"}
+:::

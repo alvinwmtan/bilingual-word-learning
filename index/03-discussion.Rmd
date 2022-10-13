@@ -7,8 +7,8 @@ options(digits=3)
 
 # General discussion
 What role do TEs have in bilingual word learning? 
-By uniting evidence at the by-study and by-item levels, we found that language input is deeply intertwined with TEs. 
-Specifically, older children produce more TEs, and TE knowledge is particularly helpful for younger children, and for TEs with closer phonological representations. 
+By modelling word production at the by-item level, we found that language input is deeply intertwined with TEs. 
+Specifically, TE knowledge is particularly helpful for younger children, and for TEs with closer phonological representations. 
 These findings suggest that TEs provide an additional source of linguistic information for younger children, allowing them to bootstrap their word learning via cross-linguistic transfer.
 These results also corroborate those from @tsuiAreTranslationEquivalents2022, who found that children with smaller vocabulary sizes (who tend to be younger) have a preference towards acquiring TEs, whereas children with larger vocabulary sizes (who tend to be older) are neutral with regard to TEs.
 

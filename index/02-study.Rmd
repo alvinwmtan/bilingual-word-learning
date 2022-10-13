@@ -1,8 +1,8 @@
-# Study 2: Modelling word production {#word-prod}
+# Study: Modelling word production {#word-prod}
 In this study, we modelled bilingual children's productive vocabulary from CDI datasets, aiming to understand the standard model as a model of word learning in bilingual contexts, and to investigate the contribution of TEs to word learning.
 Under the standard model [@kachergisStandardModelEarly2022], learning can be conceived of as an accumulation of information from language input about a given word, such that the child knows the word once a threshold is reached, which may differ for different words, relating to the difficulty of the word. 
 As such, we constructed our model by including input-related factors, including the administration-level variables examined in the previous sections (age and language exposure) as well as a distributional property of words (frequency). 
-We also include factors relating to item difficulty, including semantic and syntactic variables previously demonstrated to influence word learning [concreteness and mean length of utterance in words (MLU-w); see @braginskyConsistencyVariabilityChildren2019]. 
+We also include factors relating to item difficulty, including semantic and syntactic variables previously demonstrated to influence word learning (concreteness and mean length of utterance in words (MLU-w); see @braginskyConsistencyVariabilityChildren2019). 
 With the standard model as a baseline, we added TEs and phonological similarity as additional predictive variables to determine if they explained some of the variance in word knowledge.
 We then examined the contributions of these variables, specifically testing the hypotheses that older children have better word knowledge, that greater frequency and language exposure predict better word knowledge, as does the interaction between them, that higher concreteness and lower MLU-w predict better word knowledge, that knowing a word predicts knowing its corresponding TE, and that greater phonological similarity predicts better word knowledge only when the word's TE is known.
 
