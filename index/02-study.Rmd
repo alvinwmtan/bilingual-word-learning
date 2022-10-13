@@ -12,7 +12,7 @@ datasets_small <- read_csv("data/misc/datasets_small.csv", show_col_types = FALS
 datasets_small |> 
   rename(`$N_P$` = Ppts,
          `$N_A$` = Admins) |> 
-  knitr::kable(caption = "Descriptive statistics of datasets used in Study 2. $N_P$: number of participants; $N_A$: number of administrations.", 
+  knitr::kable(caption = "Descriptive statistics of datasets used. $N_P$: number of participants; $N_A$: number of administrations.", 
                booktabs = T,
                escape = F) |> 
   kable_styling(font_size = 9,
@@ -135,7 +135,8 @@ get_ul_preds <- function(data, model, unilemmas) {
   
   bind_rows(raw_data, predicted) |> 
     mutate(freq_t_binned = cut(freq_t, c(-Inf,-0.5,0,0.5,Inf)),
-           lang_prop_binned = cut(lang_prop, c(0, 40, 60, 100)),
+           lang_prop_binned = cut(lang_prop, c(0, 40, 60, 100),
+                                  include.lowest = TRUE),
            type = as.factor(type))
 }
 
@@ -192,7 +193,7 @@ We find strong effects of most predictors in the expected directions: age ($\bar
 Interestingly, there is no reliable interaction effect between frequency and proportion exposure ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_log_pf_t") |> pull(Estimate) |> mean()`), as the estimates which lay beyond the region of practical equivalence had Bayes factor of < 2. 
 
 (ref:coef-base-cap) Estimates of predictor coefficients for Model 1 fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
-```{r coef-base, out.width='2.25in', out.height='3in', fig.width=3.37, fig.height=4.5, fig.align='center', fig.cap="(ref:coef-base-cap)"}
+```{r coef-base, out.width='2.25in', out.height='2.5in', fig.width=3.37, fig.height=3.75, fig.align='center', fig.cap="(ref:coef-base-cap)"}
 plot_coefs(mp_b)
 ```
 
@@ -209,7 +210,7 @@ Frequency, as well as frequency by language exposure, both appeared to have inte
 All other interaction effects had posterior distributions that largely fell within the region of practical equivalence.
 
 (ref:coef-te-cap) Estimates of predictor coefficients (main effects and interactions with TE) for Model 2 fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
-```{r coef-te, out.width='3.75in', out.height='3in', fig.width=5.625, fig.height=4.5, fig.align='center', fig.cap="(ref:coef-te-cap)"}
+```{r coef-te, out.width='3.75in', out.height='2.5in', fig.width=5.625, fig.height=3.75, fig.align='center', fig.cap="(ref:coef-te-cap)"}
 plot_coefs(mp_t)
 ```
 
@@ -224,7 +225,7 @@ There is also an additional interaction effect between TE knowledge and phonolog
 All other interaction effects had posterior distributions that largely fell within the region of practical equivalence.
 
 (ref:coef-full-cap) Estimates of predictor coefficients (main effects, and interactions with phonological similarity and/or TE) for Model 3 fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
-```{r coef-full, out.width='6in', out.height='3in', fig.width=9, fig.height=4.5, fig.align='center', fig.cap="(ref:coef-full-cap)"}
+```{r coef-full, out.width='6in', out.height='2.5in', fig.width=9, fig.height=3.75, fig.align='center', fig.cap="(ref:coef-full-cap)"}
 plot_coefs(mp_f)
 ```
 
@@ -273,7 +274,7 @@ First, the age-by-TE interaction is stronger for verbs ($\bar\beta =$ `r mp_lc_f
 Second, the frequency-by-TE interaction is positive for adjectives ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_freq_t:te_known1", lexical_class == "adjectives") |> pull(Estimate) |> mean()`) whereas it is negative for other lexical categories; this may be driven by particular semantic categories (e.g., colour words), which both have higher frequency and are commonly learnt by children in both languages.
 
 (ref:coef-lc-cap) Estimates of predictor coefficients (main effects, and interactions with phonological similarity and/or TE) for Model 3 fit on each dataset, subsetted by lexical category. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
-```{r coef-lc, out.width='6in', out.height='3.2in', fig.width=9, fig.height=4.8, fig.align='center', fig.cap="(ref:coef-lc-cap)"}
+```{r coef-lc, out.width='6in', out.height='2.7in', fig.width=9, fig.height=4, fig.align='center', fig.cap="(ref:coef-lc-cap)"}
 ggplot(mp_lc_f, aes(x = Estimate, 
                     y = fct_rev(fct_inorder(Predictor)),
                     col = lexical_class)) +
@@ -283,9 +284,9 @@ ggplot(mp_lc_f, aes(x = Estimate,
               fill = "gray90", alpha = .1, color = NA) +
   geom_vline(xintercept = 0, color = "gray30", linetype = "dashed") +
   geom_point(aes(shape = log_BF <= 3), size = 1, alpha = 1) +
-  ggstance::stat_summaryh(geom = "crossbarh", 
-                          fun.x = mean, fun.xmin = mean, fun.xmax = mean,
-                          fatten = 1) +
+  stat_summary(geom = "crossbar", 
+               fun = mean, fun.min = mean, fun.max = mean,
+               width = 0.5, fatten = 2) +
   scale_colour_discrete(name = "Lexical category",
                         labels = c("Adjectives", "Function words", "Nouns", "Verbs")) +
   scale_shape_manual(values = c(19, 1), guide = "none") +

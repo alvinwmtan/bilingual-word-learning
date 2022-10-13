@@ -135,9 +135,9 @@ plot_coefs <- function(posteriors) {
               fill = "gray90", alpha = .1, color = NA) +
     geom_vline(xintercept = 0, color = "gray30", linetype = "dashed") +
     geom_point(aes(shape = log_BF <= 3), size = 1, alpha = 1) +
-    ggstance::stat_summaryh(geom = "crossbarh",
-                            fun.x = mean, fun.xmin = mean, fun.xmax = mean,
-                            fatten = 1) +
+    stat_summary(geom = "crossbar",
+                 fun = mean, fun.min = mean, fun.max = mean,
+                 width = 0.5, fatten = 2) +
     scale_colour_discrete(guide = "none") +
     scale_shape_manual(values = c(19, 1), guide = "none") +
     labs(x = "Coefficient estimate", y = "")

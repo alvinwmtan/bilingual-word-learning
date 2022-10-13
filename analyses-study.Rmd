@@ -131,7 +131,8 @@ mr_pred <- predict(mr_model_base, re_formula = NA)
 mr_complete_pred <- mr_complete |>
   cbind(mr_pred) |>
   mutate(freq_t_binned = cut(freq_t, c(-Inf,-0.5,0,0.5,Inf)),
-         lang_prop_binned = cut(lang_prop, c(0, 40, 60, 100)))
+         lang_prop_binned = cut(lang_prop, c(0, 40, 60, 100), 
+                                include.lowest = TRUE))
 saveRDS(mr_complete_pred, "outputs/mr_complete_pred.rds")
 ```
 
