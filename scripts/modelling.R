@@ -1,16 +1,16 @@
 cats <- c("nouns", "verbs", "adjectives", "function_words")
 
 base_formula <- formula(value ~
-                          (age_t + freq_t * lang_prop_t +
-                             concreteness_t + mlu_t) +
+                          (age_t + freq_t + lang_prop_t +
+                             concreteness_t + mlu_t + log_pf_t) +
                           (1|child_id) + (1|lang_item_id))
 te_formula <- formula(value ~
-                        (age_t + freq_t * lang_prop_t +
-                           concreteness_t + mlu_t) * te_known +
+                        (age_t + freq_t + lang_prop_t +
+                           concreteness_t + mlu_t + log_pf_t) * te_known +
                         (1|child_id) + (1|lang_item_id))
 full_formula <- formula(value ~
-                          (age_t + freq_t * lang_prop_t +
-                             concreteness_t + mlu_t) *
+                          (age_t + freq_t + lang_prop_t +
+                             concreteness_t + mlu_t + log_pf_t) *
                           (te_known * overlap_t) +
                           (1|child_id) + (1|lang_item_id))
 
@@ -84,6 +84,7 @@ model_posteriors <- function(model) {
   describe_posterior(model,
                      centrality = "all",
                      ci = .89,
+                     ci_method = "hdi",
                      test = c("pd", "rope", "bf"))
 }
 

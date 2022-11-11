@@ -5,7 +5,7 @@ She knows that this is referred to as a _dog_ <span style="font-variant:small-ca
 How likely is it, then, that she knows that it is referred to as a _perro_ <span style="font-variant:small-caps;">(spa)</span> in Spanish?
 What about a more difficult word---does knowing _mañana_ <span style="font-variant:small-caps;">(spa)</span> help you learn _tomorrow_ <span style="font-variant:small-caps;">(eng)</span>?
 
-These questions, and others like them, belong to the domain of bilingual language acquisition, which is particularly important for a number of practical and theoretical reasons.
+These questions belong to the domain of bilingual language acquisition, which is particularly important for a number of practical and theoretical reasons.
 Practically, studying bilingualism is important because a large proportion of the world speaks more than one language, with estimates ranging from a third to half of the global population [see e.g., @weiDimensionsBilingualism2007; @wolckTypesNaturalBilingual1987], and the increasingly globalised world means that bi- or multilingualism is increasingly becoming the norm.
 Understanding bilingual language learning is also deeply connected with a number of related issues in other fields, including pedagogy [e.g., @garciaBilingualEducation21st2011], clinical applications [e.g., @gonzalez-barreroBilingualAdjustedVocabulary2020], and language policy [e.g., @brownMaintainingHeritageLanguage2011] among others.
 In addition, parents have some level of agency in determining the kind of bilingual environments they provide for their children [e.g., @byers-heinleinBilingualismEarlyYears2013; @dehouwerBilingualLanguageAcquisition2017]; insight from bilingual language acquisition can thus help to inform effective, evidence-backed bilingual parenting strategies.
@@ -17,13 +17,13 @@ Indeed, there is a growing body of evidence demonstrating such differences---for
 One unique aspect of bilinguals' lexicons is the presence of _translation equivalents_ (TEs), which are items in different languages that have the same or highly similar referents (e.g., _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span>).[^01-01]
 Investigating TEs may shed light on the mechanisms underlying word learning, since they provide a different word learning situation than the typical one-to-one mapping afforded to monolingual learners (for whom synonymy is not as systematic or as widespread).
 For example, the presence of TEs may be related to a reduction in bilingual learners' use of the mutual exclusivity bias---that novel words should map to novel, rather than familiar, referents---during word learning [see @lewisRoleDevelopmentalChange2020].
-As such, in the current work, we examined the role of TEs in bilingual word learning.
+
+In the current work, we examined the role of TEs in bilingual word learning, using parent-report measures to provide a global picture of young children’s bilingual vocabulary.
 Before describing our specific approach, we first consider how word learning can be measured using parent report, as well as some methodological challenges related to TEs.
 
 [^01-01]: Throughout this paper, we distinguish between _TEs_, which simply refer to translation equivalents that exist between two languages irrespective of a child's knowledge of the words in question, and _TE pairs_, which refer to pairs of TEs for which both words are known by a child.
 
 ## Studying children's vocabulary growth using parent report
-In order to answer questions about the patterns and mechanisms related to word learning, researchers have used both observational and experimental tools. 
 Structured parent report is an especially valuable approach to investigate the broad makeup of a child's lexicon, as it allows for a global picture of the child's language.
 In particular, a common tool for vocabulary measurement is the MacArthur--Bates Communicative Development Inventory [CDI; @fensonMacArthurBatesCommunicativeDevelopment2007]. 
 CDIs are a family of vocabulary checklists in which parents are asked to mark words that their child "understands" or "understands and says" from a large word list, with demonstrated reliability and validity as an estimator of children's vocabularies [@fensonMacArthurBatesCommunicativeDevelopment2007; @mayorStatisticalEstimateInfant2011].
@@ -73,8 +73,9 @@ Importantly, varying the percentile used would change the outcome of the model--
 Therefore, finding a credible baseline is necessary to advance this line of investigation.
 
 ## The current work
-In the present work, we adopt an alternative strategy to handle the baseline problem---examining the role of TEs in word learning directly, by determining how knowing one word affects the probability of knowing its corresponding TE. 
-We could then determine whether age affects TE learning by exploring how the effect of TE knowledge changes with the age of the child.
+In the present work, we adopt an alternative strategy to handle the baseline problem.
+We examine the role of TEs for individual words, estimating how knowing one word effects the probability of knowing its corresponding TE. 
+We can then determine whether age affects TE learning by exploring how the effect of TE knowledge changes with the age of the child.
 This item-based approach draws from previous work [@braginskyConsistencyVariabilityChildren2019; @goodmanDoesFrequencyCount2008] estimating item acquisition trajectories for individual words---i.e., the probability that a child knows a given word at a given age.
 This method controls for the age trajectory of each word independently, creating a baseline prediction about the acquisition of a particular word that can be modulated by the presence or absence of a TE. 
 Thus, this method directly addresses the baseline problem through the use of a statistical model that captures baseline acquisition probabilities. 

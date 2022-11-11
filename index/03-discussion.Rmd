@@ -5,10 +5,30 @@ library(thesisdown)
 options(digits=3)
 ```
 
-# General discussion
+# Discussion
+
+## Bilingual word learning and the standard model
+
+The current analyses reveal that age, frequency, and language exposure all predict word knowledge, providing support for Hypothesis 1.
+This result confirm that the standard model is largely a meaningful and effective model of language learning in the bilingual context, with input-related variability being an important dimension affecting word learning.
+Specifically, children who are older (i.e., who have received more language input) are more likely to know words, and words that are more frequent (i.e., that occupy a larger proportion of language input) are more likely to be known.
+
+One interesting point of deviation from the standard model is the lack of an interaction effect between frequency and proportion of language exposure. 
+Under the standard model, we can model the proportion of a word's occurrence in a child's language input as the product of frequency and proportion of language exposure, and would thus expect an interaction effect to emerge, but no such effect was reliably observed. 
+One possible reason is that the non-effect was due to the way the model was specified: The model included proportion of language exposure without a log-transform, whereas frequency and the interaction of frequency and language exposure were both log-transformed.
+This resulted in some multicollinearity between the latter two, and as such, the variance may have been split between the two predictors. 
+Another explanation may be that input-related factors are titrated by total amount of linguistic input received by the child (i.e., the important metric is _expected number of tokens_ of a word), and the absence of such data may result in insufficient sensitivity to detect an effect [see @marchmanCaregiverTalkYoung2017].
+These explanations are not mutually exclusive, and further investigation into the relationship between language input and word learning is imperative to better determine the validity of the present result; for example, studies that use dense recordings to give more exact, absolute metrics on a child's language input may be more sensitive to smaller effects of input-related factors.
+
+The results also suggest that other factors affecting word learning in the monolingual context [see @braginskyConsistencyVariabilityChildren2019] also have a similar effect in the bilingual context, including concreteness and MLU-w, providing support for Hypotheses 2. 
+These factors relate to the variability in difficulty across words in the standard model, such that words that are more abstract and that occur in more syntactically complex sentences are more challenging and thus learned later. 
+These findings are reinforced by the result that the effects of such variability are relatively consistent across datasets, suggesting that acquisition strategies are largely similar across these populations despite cultural and linguistic differences. 
+
+## Bilingual word learning and TEs
+
 What role do TEs have in bilingual word learning? 
 By modelling word production at the by-item level, we found that language input is deeply intertwined with TEs. 
-Specifically, TE knowledge is particularly helpful for younger children, and for TEs with closer phonological representations. 
+Specifically, TE knowledge is particularly helpful for younger children, partially supporting Hypothesis 3. 
 These findings suggest that TEs provide an additional source of linguistic information for younger children, allowing them to bootstrap their word learning via cross-linguistic transfer.
 These results also corroborate those from @tsuiAreTranslationEquivalents2022, who found that children with smaller vocabulary sizes (who tend to be younger) have a preference towards acquiring TEs, whereas children with larger vocabulary sizes (who tend to be older) are neutral with regard to TEs.
 
@@ -29,11 +49,13 @@ One corollary of this explanation would be that younger bilingual children are m
 However, evidence from priming studies with bilingual children [e.g., @deandaLexicalSemanticDevelopmentBilingual2020; @flocciaVocabularyYearOlds2018] has suggested that there is no significant effect in this direction.
 These studies may have been underpowered to detect such an effect, though, and thus larger studies are needed to verify whether there is in fact any effect of age on cross-linguistic priming.
 
-The results also support the existence of a cognate advantage in TE learning, as found by @mitchellCognatesAreAdvantaged2022 among others, as TE knowledge gives a greater boost when the TEs are more similar phonologically. 
+The results also support the existence of a cognate advantage in TE learning, as found by @mitchellCognatesAreAdvantaged2022 among others, as TE knowledge gives a greater boost when the TEs are more similar phonologically, affirming Hypothesis 4. 
 This also aligns with work by @flocciaVocabularyYearOlds2018, who examined the role of phonological overlap at the by-language level, finding that bilingual children who spoke languages that had higher phonological overlap with British English also produced more words in that language [see also @gampeDoesLinguisticSimilarity2021 for a similar study]. 
 Such a cognate advantage also raises interesting questions about whether these items have shared or more closely related phonological representations in the bilingual lexicon. 
 Some evidence towards this hypothesis comes from previous work on the cognate facilitation effect, which suggests that cognacy or phonological similarity improves lexical processing [e.g., @shengRobustDemonstrationCognate2016; @squiresFactorsInfluencingCognate2020; @vonholzenImpactCrosslanguagePhonological2019]. 
 This may imply that bilingual children are better able to bootstrap their word learning when both semantic and phonological representations are more similar. 
+
+## Limitations and conclusion
 
 There are a number of limitations regarding the data employed in the present work.
 The first is shared by other similar modelling work, which is that the vocabulary data, language input data, and psycholinguistic rating data are derived from different groups of individuals, which limits the variability that can be captured between children. 
@@ -47,17 +69,16 @@ There are many possible distributions of the language input received by bilingua
 These factors are crucial because they may result in differing distributions of words being learnt (e.g., some words may be more likely to appear in the home context, and would be more likely to be learnt in the home language). 
 Furthermore, greater variability in speaker and context has been found to improve word production [@goldenbergContextualVariationLanguage2022], suggesting that such contextual factors may be highly informative in understanding child word learning.
 The contribution of contextual variability may be somewhat lower in our datasets, however, given that the children are aged 0--4 years old, and may experience less variability in number of distinct contexts as opposed to older children.
-Regardless, this provides an impetus for more dense, naturalistic data collection, which can provide more accurate, absolute metrics on each child's language input.
+Regardless, this provides an impetus for more dense, naturalistic data collection, which can provide more accurate and rich metrics on each child's language input [see also @casillasLearningLanguageVivoinpress].
 
 Another key limitation has to do with the distribution of the datasets. 
 To begin with, there are many fewer bilingual datasets available than comparable monolingual datasets [with reference to Wordbank; @frankWordbankOpenRepository2017]. 
 Furthermore, given that many of the populations involved are convenience samples, there is a limited set of languages included in the analyses. 
 In particular, all datasets in Studies 2 included English as one of the languages spoken by participants, and only included two languages other than English, namely Spanish and French. 
-Notably, this reflects the distribution of languages studied in the literature (see Figure \@ref(fig:lang-count)), likely because the United States and Canada are the countries in which much of this research is being conducted.
+Notably, this reflects the distribution of languages studied in the literature, likely because the United States and Canada are the countries in which much of this research is being conducted.
 This limits the generalisability of the findings, although we suspect that the two-route model and relevant results still hold for other language combinations, since at least some of the results (particularly those from Model 3) accounted for the effect of phonological similarity. 
 
-Notwithstanding these limitations, it is encouraging that the different levels of analysis and the different modelling techniques involved have converged on similar results, which reinforces the theoretical conclusions of this work. 
+Notwithstanding these limitations, the large scope of the included datasets, along with the consistent findings across datasets, contributes evidence about the robustness and generalisability of these results, and reinforces the theoretical conclusions of this work. 
 Furthermore, the approach of comparing words with or without known TEs has provided a tractable method to resolve the baseline problem, allowing for the direct elucidation of the role of TEs across age without the confound of a general increase in vocabulary. 
-The large scope of the included datasets, along with the consistent findings across datasets, additionally contributes evidence about the robustness and generalisability of these results.
 We hope that the present methodological approach encourages data sharing and general open science practices, which permit such large-scale, cross-dataset analyses. 
 As more and more relevant data accumulates within the universe of language acquisition research, we believe that many more data-driven studies will continue to uncover important patterns and findings, thereby adding to our collective understanding of early word learning. 

@@ -35,17 +35,16 @@ authornote: |
   Virginia A. Marchman, Department of Psychology, Stanford University, ORCID 0000-0001-7183-6743.
   Michael C. Frank, Department of Psychology, Stanford University, ORCID 0000-0002-7551-4378.
 
-abstract: | 
-  Bilingual environments present an interesting context for word learning, notably due to the existence of translation equivalents (TEs)---words in different languages that share similar meanings. Understanding how TEs are learnt may give us insight into mechanisms underlying word learning in young children. However, studying TE learning is often confounded by the fact that increases in the overall size of vocabulary with age leads to a greater set of opportunities for learning TEs. As such, we employed an item-level analysis, which controls for the age trajectory of each item independently. We found that knowing a word's TE increased the likelihood of knowing that word itself for younger children, and for TEs that are more similar phonologically. These results corroborate earlier findings that children with smaller vocabularies have a preference towards acquiring TEs, and that TEs which are cognates are acquired earlier. Thus, TEs may provide an alternative source of information for younger children, thereby allowing bilingual children to bootstrap their early word learning in one language using their knowledge of the other language.
+abstract          : "(ref:abstract)"
   
 keywords          : "translation equivalents, bilingualism, word learning, standard model, baseline problem"
 # wordcount         : "X"
 
 bibliography      : "index/bib/thesis.bib"
-annotate_references: yes
-nocite: |
-  @coteMultilingualToddlersVocabulary2020
-  @caselliParoleFrasiNel2011
+annotate_references: no
+# nocite: |
+#   @coteMultilingualToddlersVocabulary2020
+#   @caselliParoleFrasiNel2011
 
 floatsintext      : no
 linenumbers       : no
@@ -90,6 +89,7 @@ set.seed(42)
 knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 ```
 
+(ref:abstract) Bilingual environments present an important context for word learning. One feature of bilingual environments is the existence of translation equivalents (TEs)---words in different languages that share similar meanings. Understanding how TEs are learnt may give us insight into mechanisms underlying word learning in young children. However, prior studies of TE learning have often been confounded by the fact that increases in the overall size of vocabulary with age leads to a greater set of opportunities for learning TEs. To address this confound, we employed an item-level analysis, which controls for the age trajectory of each item independently. We used Communicative Development Inventory data from four bilingual datasets (two English--Spanish and two English--French; total $N$ = 504) for modelling, finding that knowing a word's TE increased the likelihood of knowing that word itself for younger children, and for TEs that are more similar phonologically. These results corroborate earlier findings that children with smaller vocabularies learn TEs more easily, especially when TEs are also cognates. Thus, TEs may provide an alternative source of information for younger children, allowing bilingual children to bootstrap their early word learning in one language using their knowledge of the other language.
 
 <!-- We used `r cite_r("r-references.bib")` for all our analyses. -->
 
@@ -105,7 +105,6 @@ knitr::opts_chunk$set(cache.extra = knitr::rand_seed)
 \newpage
 
 # References
-References marked with an asterisk indicate studies included in the meta-analysis.
 
 ::: {#refs custom-style="Bibliography"}
 :::
