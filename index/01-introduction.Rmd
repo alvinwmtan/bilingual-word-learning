@@ -3,22 +3,22 @@ Imagine a one-year-old child who grows up hearing both English and Spanish.
 Her family has a medium-sized, four-legged creature that is furry and barks. 
 She knows that this is referred to as a _dog_ <span style="font-variant:small-caps;">(eng)</span> in English.
 How likely is it, then, that she knows that it is referred to as a _perro_ <span style="font-variant:small-caps;">(spa)</span> in Spanish?
-What about a more difficult word---does knowing _mañana_ <span style="font-variant:small-caps;">(spa)</span> help you learn _tomorrow_ <span style="font-variant:small-caps;">(eng)</span>?
+What about a more difficult word---does knowing _mañana_ <span style="font-variant:small-caps;">(spa)</span> mean that she is more likely to know _tomorrow_ <span style="font-variant:small-caps;">(eng)</span>?
 
-These questions belong to the domain of bilingual language acquisition, which is particularly important for a number of practical and theoretical reasons.
-Practically, studying bilingualism is important because a large proportion of the world speaks more than one language, with estimates ranging from a third to half of the global population [see e.g., @weiDimensionsBilingualism2007; @wolckTypesNaturalBilingual1987], and the increasingly globalised world means that bi- or multilingualism is increasingly becoming the norm.
+Studying language learning in the bilingual context is important because a large proportion of the world speaks more than one language, with estimates ranging from a third to half of the global population [see e.g., @weiDimensionsBilingualism2007; @wolckTypesNaturalBilingual1987], and the increasingly globalised world means that bi- or multilingualism is increasingly becoming the norm.
 Understanding bilingual language learning is also deeply connected with a number of related issues in other fields, including pedagogy [e.g., @garciaBilingualEducation21st2011], clinical applications [e.g., @gonzalez-barreroBilingualAdjustedVocabulary2020], and language policy [e.g., @brownMaintainingHeritageLanguage2011] among others.
-In addition, parents have some level of agency in determining the kind of bilingual environments they provide for their children [e.g., @byers-heinleinBilingualismEarlyYears2013; @dehouwerBilingualLanguageAcquisition2017]; insight from bilingual language acquisition can thus help to inform effective, evidence-backed bilingual parenting strategies.
+In addition, because parents have some level of agency in determining the kind of bilingual environments they provide for their children [e.g., @byers-heinleinBilingualismEarlyYears2013; @dehouwerBilingualLanguageAcquisition2017], insight from bilingual language acquisition can help to inform effective, evidence-backed bilingual parenting strategies.
 
 Furthermore, bilingual language environments provide a natural experiment for understanding the effects of language exposure, context, speakers, and many other factors regarding language input, since it is possible to "hold the child factor constant" [@pearsonRelationInputFactors1997]. 
 Comparing bilinguals and monolinguals can also reveal differences in strategies or heuristics employed in word learning, thereby determining whether or not such tendencies are independent of the type and amount of language input received. 
-Indeed, there is a growing body of evidence demonstrating such differences---for example, bilingual children are sensitive to different cues during word learning [e.g., @colungaBilingualMonolingualChildren2012; @grobaBilingualMonolingualChildren2018; @luniewskaWordKnowledgeLexical2022], exhibit prolonged flexibility in interpreting word forms [e.g., @grafestesFlexibilityBilingualInfants2015], and have different expectations about metalinguistic information [e.g., @byers-heinleinSurmountingTowerBabel2014; @hendersonSheCalledThat2015]. 
+Indeed, there is a growing body of evidence demonstrating such differences---for example, bilingual children are sensitive to different cues during word learning [e.g., @colungaBilingualMonolingualChildren2012; @grobaBilingualMonolingualChildren2018; @luniewskaWordKnowledgeLexical2022], exhibit prolonged flexibility in interpreting word forms [e.g., @grafestesFlexibilityBilingualInfants2015], and have different expectations about metalinguistic information [e.g., @byers-heinleinSurmountingTowerBabel2014; @hendersonSheCalledThat2015] than children learning only one language. 
 
-One unique aspect of bilinguals' lexicons is the presence of _translation equivalents_ (TEs), which are items in different languages that have the same or highly similar referents (e.g., _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span>).[^01-01]
+One unique feature of bilingual contexts is the presence of _translation equivalents_ (TEs), which are lexical items in different languages that have the same or highly similar referents (e.g., _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span>).[^01-01]
 Investigating TEs may shed light on the mechanisms underlying word learning, since they provide a different word learning situation than the typical one-to-one mapping afforded to monolingual learners (for whom synonymy is not as systematic or as widespread).
 For example, the presence of TEs may be related to a reduction in bilingual learners' use of the mutual exclusivity bias---that novel words should map to novel, rather than familiar, referents---during word learning [see @lewisRoleDevelopmentalChange2020].
 
-In the current work, we examined the role of TEs in bilingual word learning, using parent-report measures to provide a global picture of young children’s bilingual vocabulary.
+In the current work, we examined the role of TEs in bilingual word learning: whether knowing a word in one language increases the probability of knowing its corresponding TE. 
+In other words, we investigate whether or not children can use their knowledge in one language to bootstrap language learning in another.
 Before describing our specific approach, we first consider how word learning can be measured using parent report, as well as some methodological challenges related to TEs.
 
 [^01-01]: Throughout this paper, we distinguish between _TEs_, which simply refer to translation equivalents that exist between two languages irrespective of a child's knowledge of the words in question, and _TE pairs_, which refer to pairs of TEs for which both words are known by a child.
@@ -29,8 +29,8 @@ In particular, a common tool for vocabulary measurement is the MacArthur--Bates 
 CDIs are a family of vocabulary checklists in which parents are asked to mark words that their child "understands" or "understands and says" from a large word list, with demonstrated reliability and validity as an estimator of children's vocabularies [@fensonMacArthurBatesCommunicativeDevelopment2007; @mayorStatisticalEstimateInfant2011].
 Their simplicity and cost-effectiveness, coupled with the fact that there are adaptations of CDIs in more than 100 languages, have resulted in widespread use of this tool among researchers, clinicians, and other early childhood practitioners.
 
-The most common use-case of CDIs is to measure children's vocabulary sizes, permitting an estimation of the variation across _children_ at a given age [e.g., @fensonMacArthurBatesCommunicativeDevelopment2007; @frankVariabilityConsistencyEarly2021].
-The fact that CDIs contain item-level information, however, means that it is also possible to examine variation across _items_ using CDI data.
+The most common use-case of CDIs is to measure children's vocabulary sizes, permitting an estimation of the variation across _children_ at a given age in how many words they are reported to produce [e.g., @fensonMacArthurBatesCommunicativeDevelopment2007; @frankVariabilityConsistencyEarly2021].
+The fact that CDIs contain item-level information, however, means that it is also possible to use CDI data to examine variation across _items_.
 One such approach involves predicting the acquisition trajectories of individual words, which has found that words are acquired earlier when they are more frequent in a child's language input [@goodmanDoesFrequencyCount2008], and when they are used in more distinctive contexts [@royPredictingBirthSpoken2015].
 Larger-scale analyses have further been enabled by data sharing practices, via tools such as CHILDES [@macwhinneyCHILDESProjectTools2000], an open repository of child language corpora, as well as Wordbank [@frankWordbankOpenRepository2017], an open repository of CDI data.
 For example, such analyses have found that there is substantial overlap in the earliest words produced by young children across different languages [@tardifBabyFirst102008], that frequency and concreteness are strong predictors of the age of acquisition of words [@braginskyConsistencyVariabilityChildren2019], and that children across most languages have a positive noun bias and a negative function word bias [@frankVariabilityConsistencyEarly2021].
@@ -45,32 +45,40 @@ This computational model helps to unify a number of earlier approaches, and prov
 The use of CDIs can be extended to bilingual children by administering two CDIs of two different languages [see @weislederUsingParentReport2022 for a scoping review].
 TE knowledge can then be assessed by measuring the conceptual overlap between the two forms, by mapping items on each form onto "universal lemmas", or "unilemmas" [see @braginskyConsistencyVariabilityChildren2019]; these are approximate cross-linguistic conceptual mappings of words, verified by the judgement of native or advanced proficient speakers of the language.
 For example, _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span> map to the same unilemma, _<span style="font-variant:small-caps;">dog</span>_. 
-This two-CDI method has supported a range of findings about TEs, including the observation that older children have more TE pairs in their vocabularies [e.g., @tsuiAreTranslationEquivalents2022].
 
-However, one important limitation of this method is the _baseline problem_: CDIs are finite, and thus children who know a greater proportion of the words on each of the CDI forms (who tend to be older) are also directly likely to have a greater proportion of TE pairs simply by chance (i.e., as a random baseline). 
+This two-CDI method has supported a range of findings about TEs, including the observation that older children have more TE pairs in their vocabularies [e.g., @tsuiAreTranslationEquivalents2022].
+However, it is difficult to appropriately interpret this finding due to the _baseline problem_: CDIs are finite, and thus children who know a greater proportion of the words on each of the CDI forms (who tend to be older) are also directly likely to have a greater proportion of TE pairs simply by chance (i.e., as a random baseline). 
 Consider an idealised scenario of word learning with two key assumptions: (1) the probability of knowing any word in language $i$ is uniformly $P_i$, and (2) word knowledge in a child's two languages are independent.
 In this case, the expected proportion of a bilingual child's vocabulary composed of TEs is $\mathbb{E}(\textrm{\%TE}) = P_1 \cdot P_2$.
 Then, as long as $P_1$ and $P_2$ are monotonically non-decreasing with age (which we assume to be true as long as a child is receiving input in the relevant language), $\mathbb{E}(\textrm{\%TE})$ would also be monotonically non-decreasing.
-Hence, simply observing an increase in proportion of TE pairs with age does not help us identify the role that TEs play in bilingual word learning.
+In other words, just knowing more words means that by chance, more of them happen to be translation equivalents.
+Hence, simply observing an increase in proportion of TE pairs with age does not suggest that TEs play a particular role in bilingual word learning (e.g., whether children have more TE pairs compared to a meaningful baseline); instead, this observation could be merely an artifact of older children having larger vocabularies.
 
 One way to work around the baseline problem is to compare the proportion of TE pairs known to an expected proportion of TE pairs, calculated under the null hypothesis that a bilingual child acquires their two vocabularies independently (i.e., that assumption 2 holds) [e.g., @tsuiAreTranslationEquivalents2022].
 If the independence assumption is met, then the probability of a child knowing both TEs would straightforwardly be the product of the probabilities of the child knowing each word. 
 Otherwise, this equivalence would not hold---if bilingual children have a preference towards acquiring TEs, the joint probability would be greater than expected; if bilingual children instead have an avoidance against acquiring TEs, then the joint probability would be less than expected. 
-Measuring the deviance from the expected values across age can thus demonstrate whether there is an interaction between TE knowledge and age. 
+Measuring the deviance from the expected values across age can thus demonstrate whether there is an interaction between TE knowledge and age---i.e., whether bias for or against TEs changes across development.
 
 For this approach to be meaningful, one would also need to account for the fact that different words do not have the same probability of being known at any given point---in other words, different words have different ages of acquisition (i.e., assumption 1 does not hold).
 To address this, @bilsonSemanticFacilitationBilingual2015 simulated word learning as the growth of a semantic network, such that words with stronger connections in the network were preferentially acquired.
-They found that bilingual children produce more TE pairs than would be expected from simulated means.
-However, they did not examine the effect of individual-level variables, such as age and language exposure. 
-Notably, out of 105 children, 24 produced significantly more TE pairs than expected, while 9 produced significantly fewer than expected. 
-This observation suggests considerable variability in the acquisition patterns across children that deserves further investigation.
+They constructed a baseline by independently simulating two monolingual English lexica, then measuring the proportion of overlap between the two lexica to estimate the expected proportion of TE pairs.
+They found that bilingual children produce a higher proportion of TE pairs than would be expected from simulated means.
+However, there was considerable variability in acquisition patterns across children---out of 105 children, 24 produced significantly more TE pairs than expected, while 9 produced significantly fewer than expected. 
+This variability may have been due to individual-level variables, such as age and language exposure, or variation across languages that may not have been reflected in monolingual English norms. 
+These factors may have contributed additional variance that was not captured by the baseline, and deserve further investigation.
 
-@tsuiAreTranslationEquivalents2022 opted to use a different method, estimating the potentially learnable vocabulary at any given age as the 90th percentile monolingual norm for the language (rather than having it constant at the full size of the corresponding CDI).
-Thus, the probability of knowing any word varies with age, accounting for the distribution of ages of acquisition across CDI items.
-Using this model, they found that children with smaller vocabularies (who tend to be younger) have a preference towards acquiring TEs, whereas children with larger vocabularies (who tend to be older) are neutral towards acquiring TEs. 
+@tsuiAreTranslationEquivalents2022 opted to use a different method, by positing that the vocabulary that is potentially learnable by a child might vary with the child's developmental level.
+They estimated the potentially learnable vocabulary at any given age as the 90th percentile monolingual norm for the language (rather than having it constant at the full size of the corresponding CDI).
+Thus, the probability of knowing any word out of the potentially learnable vocabulary varies with age, accounting for the distribution of ages of acquisition across CDI items.
+Using this model, they found that children with smaller vocabularies (who tend to be younger) have a preference towards acquiring TEs, whereas children with larger vocabularies (who tend to be older) are neutral towards acquiring TEs, in comparison with expected baseline values. 
 However, the use of the 90th percentile as a baseline is a somewhat arbitrary decision. 
 Importantly, varying the percentile used would change the outcome of the model---using a lower percentile would result in greater expected values, and vice versa. 
 Therefore, finding a credible baseline is necessary to advance this line of investigation.
+
+One additional dimension of variability to consider is the observation that TEs are not all equivalent.
+Specifically, TEs vary in the degree of phonological similarity between the two items---for example, _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span> have no phonological overlap, whereas _animal_ <span style="font-variant:small-caps;">(eng)</span> and _animal_ <span style="font-variant:small-caps;">(spa)</span> are very similar phonologically.
+Indeed, previous research has suggested that TEs with greater phonological overlap are more likely to be TE pairs [@grassoCrossLinguisticCognateProduction2018; @umbelMeasuringBilingualChildren1992], and bilingual children produce more TE pairs that have high phonological overlap than TE pairs that have low phonological overlap [@boschFirstTranslationEquivalents2014; @mitchellCognatesAreAdvantaged2022; @umbelMeasuringBilingualChildren1992].
+These results suggest that phonological similarity may be an important factor to consider in understanding the role of TEs in bilingual word learning.
 
 ## The current work
 In the present work, we adopt an alternative strategy to handle the baseline problem.
@@ -79,6 +87,6 @@ We can then determine whether age affects TE learning by exploring how the effec
 This item-based approach draws from previous work [@braginskyConsistencyVariabilityChildren2019; @goodmanDoesFrequencyCount2008] estimating item acquisition trajectories for individual words---i.e., the probability that a child knows a given word at a given age.
 This method controls for the age trajectory of each word independently, creating a baseline prediction about the acquisition of a particular word that can be modulated by the presence or absence of a TE. 
 Thus, this method directly addresses the baseline problem through the use of a statistical model that captures baseline acquisition probabilities. 
-We extend this approach to additionally capture individual differences (e.g., in language exposure), permitting the simultaneous examination of both child-level and word-level variability, and how both contribute to bilingual word learning.
+We extend this approach to additionally capture individual differences (e.g., in language exposure) as well as TE-level differences (e.g., in phonological overlap), permitting the simultaneous examination of both child-level and item-level variability, and how both contribute to bilingual word learning.
 Hence, in our study, we modelled bilingual children's word production at the by-item level, with TE knowledge as a predictor. 
 The results of this approach suggest that TEs serve as an additional source of information for bilingual word learning. 

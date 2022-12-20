@@ -69,13 +69,13 @@ run_lc_models <- function(data, formula, cache = TRUE,
   models <- list()
   for (c in cats) {
     models[c] <- run_model(data |> filter(lexical_class == c),
-                           formula, cache = FALSE) |>
+                           formula, cache = FALSE, cache_path = FALSE) |>
       list()
   }
 
   if(cache) {
     if(!file.exists(cache_path)) dir.create(cache_path, recursive = TRUE)
-    saveRDS(model, full_path)
+    saveRDS(models, full_path)
   }
   models
 }

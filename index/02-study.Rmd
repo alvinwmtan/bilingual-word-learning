@@ -1,15 +1,20 @@
-# Study: Modelling word production {#word-prod}
-In this study, we modelled bilingual children's productive vocabulary from CDI datasets, aiming to understand the standard model as a model of word learning in bilingual contexts, and to investigate the contribution of TEs to word learning.
-Under the standard model [@kachergisStandardModelEarly2022], learning can be conceived of as an accumulation of information from language input about a given word, such that the child knows the word once a threshold is reached, which may differ for different words, relating to the difficulty of the word. 
-As such, we constructed our model by including input-related factors, including the administration-level variables examined in the previous sections (age and language exposure) as well as a distributional property of words (frequency). 
+# Modelling word production {#word-prod}
+In our study, we modelled bilingual children's productive vocabulary from CDI datasets, aiming to understand the standard model as a model of word learning in bilingual contexts, and to investigate the contribution of TEs to word learning.
+We first constructed a base model by adapting the standard model (which was initially developed on monolinguals) for the bilingual context.
+We constructed our model by including input-related factors, including administration-level variables (age and language exposure) as well as a distributional property of words (frequency). 
 We also include factors relating to item difficulty, including semantic and syntactic variables previously demonstrated to influence word learning (concreteness and mean length of utterance in words (MLU-w); see @braginskyConsistencyVariabilityChildren2019). 
-With the standard model as a baseline, we added TEs and phonological similarity as additional predictive variables to determine if they explained some of the variance in word knowledge.
-We then examined the contributions of these variables, specifically testing the following hypotheses: 
+Next, we added TEs and phonological similarity as additional predictive variables to determine if they explained some of the variance in bilingual word knowledge. 
+We then examined the contributions of these variables, with the following hypotheses regarding their magnitudes:
 
-1. Older children have better word knowledge, and greater frequency and language exposure predict better word knowledge, as does the interaction between them [as predicted by the standard model; @kachergisStandardModelEarly2022];
+1. Older children have better word knowledge, and greater frequency and language exposure predict better word knowledge, as does the interaction between them [as predicted by the standard model; see @kachergisStandardModelEarly2022];
 2. Higher concreteness and lower MLU-w predict better word knowledge [from previous age of acquisition modelling work, e.g., @braginskyConsistencyVariabilityChildren2019];
 3. Knowing a word predicts knowing its corresponding TE [due to previous results about TE knowledge, e.g., @anayaIdentifyingImpactWord2021; @grassoCrossLinguisticCognateProduction2018]; and 
-4. Greater phonological similarity predicts better word knowledge only when the word's TE is known [based on studies suggesting that cognate TEs are learnt earlier, e.g., @mitchellCognatesAreAdvantaged2022; @umbelMeasuringBilingualChildren1992].
+4. Greater phonological similarity predicts better word knowledge only when the word's TE is known [based on studies suggesting that phonologically similar TEs are learnt earlier, e.g., @mitchellCognatesAreAdvantaged2022; @umbelMeasuringBilingualChildren1992].
+
+We also conducted additional secondary analyses to consider how these effects would hold across populations and across lexical categories, with the following hypotheses:
+
+5. The relative importance of the various predictors is largely consistent across datasets and across language environments [given the relatively high consistencies observed by @braginskyConsistencyVariabilityChildren2019]; and
+6. The importance of different predictors may vary among different lexical categories [as different sources of linguistic information may vary in importance across lexical categories, e.g., @goodmanDoesFrequencyCount2008; @braginskyConsistencyVariabilityChildren2019].
 
 ## Datasets
 ```{r datasets-small, out.width="100%"}
@@ -58,7 +63,7 @@ In the cases where one word was mapped to multiple TEs, we took the maximum phon
 All numeric predictors were standardised (mean-centred and scaled), and TE knowledge was contrast coded as \{-0.5, 0.5\} for 'TE not known' and 'TE known' respectively. 
 
 ### Modelling
-We constructed Model 1 as a baseline using word production as the outcome variable, and all input (age, language exposure,[^04-01] frequency) and word predictors (concreteness, MLU-w) as additive fixed effects, including the interaction between frequency and language exposure (operationalised as `log(raw_freq * prop_exposure)`.[^04-02]
+We constructed Model 1 as a base model using word production as the outcome variable, and all input (age, language exposure,[^04-01] frequency) and word predictors (concreteness, MLU-w) as additive fixed effects, including the interaction between frequency and language exposure (operationalised as `log(raw_freq * prop_exposure)`).[^04-02]
 In Model 2, we added TE knowledge as both an additive fixed effect, as well as interaction effects with all other predictors. 
 Finally, in Model 3, we further added phonological similarity as both an additive fixed effect, as well as interaction effects with all other predictors. 
 For all models, we also fitted random intercepts for each child and each item. 
@@ -67,8 +72,10 @@ The full model specifications are shown in Table \@ref(tab:models).
 [^04-01]: Language exposure refers to the proportion of exposure to the language of the item in question.
 In other words, for an item in English, language exposure reflects the proportion of a child's language input that is in English.
 
-[^04-02]: According to the standard model, we expect information accumulation for a word to be proportional to the amount of input received for that word, which relates to the product of exposure and frequency. 
-As such, we regarded `log(raw_freq * prop_exposure)` to be more theoretically meaningful than the alternative method for specifying the interaction, namely `log(raw_freq) * prop_exposure`, even if this meant that the contributions of language exposure in the main and interaction effects were no longer along the same scale.
+[^04-02]: We considered a few possible ways to specify the interaction term between exposure and frequency.
+One option was `log(raw_freq * prop_exposure)`, reflecting the expectation (due to the standard model) that information accumulation for a word is proportional to the amount of input received for that word, which relates to the product of exposure and frequency. 
+However, this is mathematically equivalent to `log(raw_freq) + log(prop_exposure)`, leading to an overlap in contributions with the main effect of `log(raw_freq)`.
+As such, we opted for the alternative of `log(raw_freq) * prop_exposure`, even though this specification is less theoretically meaningful; indeed, this model may reveal that input accumulation may not be linearly related to word knowledge.
 We also considered a model that included only the interaction term and no main effects of frequency or language exposure; however, we had no _a priori_ reason to suspect that frequency and language exposure could not also affect word difficulties---conversely, for example, greater language exposure in one language may result in lower global surprisal for all words in that language, rendering them easier to learn in general.
 Hence, we retained both main and interaction effect in our models.
 
@@ -83,7 +90,7 @@ models |>
   column_spec(2, width = "9cm")
 ```
 
-We fitted these models using a Bayesian modelling approach, using the `brms` package [@burknerBrmsPackageBayesian2017] in R, with `cmdstanr` [@gabryCmdstanrInterfaceCmdStan2022] as the backend and `bayestestR` [@makowskiBayestestRDescribingEffects2019] for posterior descriptions.
+We fitted these models using a Bayesian logistic modelling approach, using the `brms` package [@burknerBrmsPackageBayesian2017] in R, with `cmdstanr` [@gabryCmdstanrInterfaceCmdStan2022] as the backend and `bayestestR` [@makowskiBayestestRDescribingEffects2019] for posterior descriptions.
 The Bayesian approach allowed the relatively complex models to converge (considering the large number of random intercepts fitted), and also provided informative model comparison metrics (namely, Bayes factors) for interpretation.
 We also used horseshoe priors ($df = 3$) as a regularisation technique to shrink small coefficients towards zero while preserving large coefficients, which was particularly important for the more complex models that may have had many insignificant interaction terms [@carvalhoHandlingSparsityHorseshoe2009; see also @piironenHyperpriorChoiceGlobal2017; @piironenSparsityInformationRegularization2017].
 Due to computational limitations, we fitted these models separately for each dataset. 
@@ -117,7 +124,8 @@ get_ul_preds <- function(data, model, unilemmas) {
                           te_known = as.factor(c(0, 1))) |> 
     mutate(age_t = retransform(age, data$age),
            lang_prop_t = retransform(lang_prop, data$lang_prop),
-           type = "predicted")
+           type = "predicted") |> 
+    get_log_pf()
   
   predicted <- predict(model, 
                        newdata = new_data, 
@@ -192,7 +200,7 @@ mp_b <- readRDS("outputs/mp_b.rds")
 ```
 Figure \@ref(fig:coef-base) shows the coefficient estimates for each predictor in Model 1 across all datasets. 
 We found strong effects of most predictors in the expected directions: age ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_age_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_high) |> mean()`]), frequency ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_freq_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_high) |> mean()`]), proportion of exposure to the language ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_high) |> mean()`]), concreteness ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_high) |> mean()`]), and MLU-w ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_high) |> mean()`]).[^04-03]
-Interestingly, there was no reliable interaction effect between frequency and proportion exposure ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_log_pf_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_log_pf_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_log_pf_t") |> pull(CI_high) |> mean()`]), as the estimates which lay beyond the region of practical equivalence had Bayes factor of < 2. 
+Interestingly, there was no reliable interaction effect between frequency and proportion exposure ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(CI_high) |> mean()`]). 
 
 [^04-03]: Estimates are means of maximum a posteriori probability estimates. Credible intervals were derived by taking the mean of the extents of the highest density intervals, and are approximate.
 
@@ -208,9 +216,8 @@ mp_t <- readRDS("outputs/mp_t.rds")
 
 Figure \@ref(fig:coef-te) shows the coefficient estimates for each predictor in Model 2 across all datasets. 
 The main effects were largely similar to those of Model 1, so we focus on the effects related to TEs.
-First, there was a main effect of TE knowledge ($\bar\beta =$ `r mp_t |> filter(Parameter == "b_te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_t |> filter(Parameter == "b_te_known1") |> pull(CI_low) |> mean()`, `r mp_t |> filter(Parameter == "b_te_known1") |> pull(CI_high) |> mean()`]), although there was relatively large variability, with two models having posteriors that were >\ 95% within the region of practical equivalence.
-There was also a negative TE interaction effect with age ($\bar\beta =$ `r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(CI_low) |> mean()`, `r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(CI_high) |> mean()`]); in other words, TE knowledge provided a greater boost to younger children. 
-Frequency, as well as frequency by language exposure, both appeared to have interaction effects with TE, although these seemed to be driven primarily by an outlier. 
+First, there was a main effect of TE knowledge ($\bar\beta =$ `r mp_t |> filter(Parameter == "b_te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_t |> filter(Parameter == "b_te_known1") |> pull(CI_low) |> mean()`, `r mp_t |> filter(Parameter == "b_te_known1") |> pull(CI_high) |> mean()`]), although there was relatively large variability, with one model having posteriors that was >\ 95% within the region of practical equivalence.
+There was also a negative TE interaction effect with age ($\bar\beta =$ `r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(CI_low) |> mean()`, `r mp_t |> filter(Parameter == "b_age_t:te_known1") |> pull(CI_high) |> mean()`]) and with frequency ($\bar\beta =$ `r mp_t |> filter(Parameter == "b_freq_t:te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_t |> filter(Parameter == "b_freq_t:te_known1") |> pull(CI_low) |> mean()`, `r mp_t |> filter(Parameter == "b_freq_t:te_known1") |> pull(CI_high) |> mean()`]); in other words, TE knowledge provided a greater boost to younger children and for less frequent words. 
 All other interaction effects had posterior distributions that largely fell within the region of practical equivalence.
 
 (ref:coef-te-cap) Estimates of predictor coefficients (main effects and interactions with TE) for Model 2 fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
@@ -224,8 +231,8 @@ mp_f <- readRDS("outputs/mp_f.rds")
 ```
 
 Figure \@ref(fig:coef-full) shows the coefficient estimates for each predictor in Model 3 across all datasets. 
-The main and TE interaction effects were largely similar to those of Model 2.
-There was also an additional interaction effect between TE knowledge and phonological similarity  ($\bar\beta =$ `r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(CI_low) |> mean()`, `r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(CI_high) |> mean()`]), such that TE knowledge provided a greater boost when the TEs have greater phonological similarity.
+The main and TE interaction effects were largely similar to those of Model 2, although the frequency-by-TE interaction effect was slightly attenuated ($\bar\beta =$ `r mp_f |> filter(Parameter == "b_freq_t:te_known1") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_f |> filter(Parameter == "b_freq_t:te_known1") |> pull(CI_low) |> mean()`, `r mp_f |> filter(Parameter == "b_freq_t:te_known1") |> pull(CI_high) |> mean()`]).
+There was also an additional interaction effect between TE knowledge and phonological similarity  ($\bar\beta =$ `r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(CI_low) |> mean()`, `r mp_f |> filter(Parameter == "b_te_known1:overlap_t") |> pull(CI_high) |> mean()`]), such that TE knowledge provided a greater boost when the TEs have greater phonological similarity, although one model had posteriors that was >\ 95% within the region of practical equivalence.
 All other interaction effects had posterior distributions that largely fell within the region of practical equivalence.
 
 (ref:coef-full-cap) Estimates of predictor coefficients (main effects, and interactions with phonological similarity and/or TE) for Model 3 fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
@@ -244,7 +251,7 @@ mp_f_mat <- mp_f |> select(Parameter, MAP, Dataset) |>
 #### Consistency.
 We additionally investigated the consistency in Model 3 predictor magnitude across the datasets to determine the extent to which different language combinations and data origins share similar factors affecting word knowledge. 
 The correlogram is shown in Figure \@ref(fig:cor-full).
-The mean pairwise correlation was `r (sum(mp_f_mat) - 4) / 12`, comparable to the production means found by Braginsky et al. (2019) for production data. 
+The mean pairwise correlation was `r (sum(mp_f_mat) - 4) / 12`, comparable to the production means found by Braginsky et al. (2019) for production data, supporting Hypothesis 5. 
 
 (ref:cor-full-cap) Correlogram of predictor magnitudes for Model 3 across all datasets.
 ```{r cor-full, out.width="100%", fig.cap="(ref:cor-full-cap)"}
@@ -273,9 +280,11 @@ As such, we subdivided each dataset into lexical categories (nouns, verbs, adjec
 
 Figure \@ref(fig:coef-lc) shows the coefficient estimates for each predictor in Model 3 across all datasets, subsetted by lexical category. 
 These results confirmed previous findings that frequency was a more important predictor for nouns ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "nouns") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "nouns") |> pull(CI_low) |> mean()`, `r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "nouns") |> pull(CI_high) |> mean()`]) than for function words ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "function_words") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "function_words") |> pull(CI_low) |> mean()`, `r mp_lc_f |> filter(Parameter == "b_freq_t", lexical_class == "function_words") |> pull(CI_high) |> mean()`]). 
-Broadly, most of the other predictors seemed to be relatively consistent among lexical categories, with two notable exceptions.
+Broadly, most of the other predictors seemed to be relatively consistent among lexical categories, with three notable exceptions.
 First, the age-by-TE interaction was stronger for verbs ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_age_t:te_known1", lexical_class == "verbs") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_lc_f |> filter(Parameter == "b_age_t:te_known1", lexical_class == "verbs") |> pull(CI_low) |> mean()`, `r mp_lc_f |> filter(Parameter == "b_age_t:te_known1", lexical_class == "verbs") |> pull(CI_high) |> mean()`]) than for other lexical categories, suggesting a greater TE boost for verbs in younger children.
 Second, the frequency-by-TE interaction was positive for adjectives ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_freq_t:te_known1", lexical_class == "adjectives") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_lc_f |> filter(Parameter == "b_freq_t:te_known1", lexical_class == "adjectives") |> pull(CI_low) |> mean()`, `r mp_lc_f |> filter(Parameter == "b_freq_t:te_known1", lexical_class == "adjectives") |> pull(CI_high) |> mean()`]) whereas it was negative for other lexical categories; this may have been driven by particular semantic categories (e.g., colour words), which both have higher frequency and are commonly learnt by children in both languages.
+Third, the phonological similarity-by-TE interaction was positive for nouns ($\bar\beta =$ `r mp_lc_f |> filter(Parameter == "b_te_known1:overlap_t", lexical_class == "nouns") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_lc_f |> filter(Parameter == "b_te_known1:overlap_t", lexical_class == "nouns") |> pull(CI_low) |> mean()`, `r mp_lc_f |> filter(Parameter == "b_te_known1:overlap_t", lexical_class == "nouns") |> pull(CI_high) |> mean()`]) whereas it was equivalent to zero for other lexical categories, suggesting that phonological similarity between TE pairs was particularly important for nouns.
+These results indicate that some predictors differ in importance across lexical categories, providing support for Hypothesis 6.
 
 (ref:coef-lc-cap) Estimates of predictor coefficients (main effects, and interactions with phonological similarity and/or TE) for Model 3 fit on each dataset, subsetted by lexical category. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
 ```{r coef-lc, out.width='6in', out.height='2.7in', fig.width=9, fig.height=4, fig.align='center', fig.cap="(ref:coef-lc-cap)"}
