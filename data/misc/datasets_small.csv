@@ -1,5 +1,5 @@
-Languages,Ppts,Admins,Age (SD),Origin,Contributor
-English–Spanish,163,229,25.80 (4.47),Wordbank,Marchman
-English–Spanish,235,650,34.83 (8.68),Wordbank,Hoff
-English–French,61,103,27.14 (3.63),Wordbank,Poulin-Dubois
-English–French,45,210,20.29 (2.58),Open data,Mitchell
+Languages,Ppts,Admins,Age (range; SD),Prop English (range; SD),Origin,Contributor
+English–Spanish,163,229,25.80 (17–36; 4.47),42.19 (0–97; 24.35),Wordbank,Marchman
+English–Spanish,235,650,34.83 (22–49; 8.68),39.56 (0–100; 28.57),Wordbank,Hoff
+English–French,61,103,27.14 (20–33; 3.63),48.28 (2–97; 19.08),Wordbank,Poulin-Dubois
+English–French,45,210,20.29 (16–27; 2.58),50.65 (0–98; 22.72),Open data,Mitchell
