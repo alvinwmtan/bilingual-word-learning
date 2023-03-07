@@ -27,7 +27,7 @@ get_lang_data <- function(language, ds_origin, oth_lang,
 
   admins <- admins |>
     rename(language = form_language) |>
-    select(child_id, data_id, language, form, age,
+    select(child_id, data_id, language, form, age, sex,
            eng_prop = English,
            oth_prop = !!oth_lang) |>
     mutate(lang_grp = lang_grp,
@@ -163,14 +163,18 @@ fetch_eng_fra_mitchell_admins <- function() {
 
   demog <- read_csv(here("data", "cdi", "public_clean_demog.csv")) |>
     mutate(data_id = subject_id * 100 + n_months) |>
-    select(data_id, subject_id, n_months, exposure_eng, exposure_fr) |>
+    select(data_id, subject_id, n_months, exposure_eng, exposure_fr, sex) |>
     nest(data = -subject_id) |>
     mutate(data = lapply(data, exp_repair)) |>
     unnest(data) |>
-    select(data_id, eng_prop = exposure_eng, oth_prop = exposure_fr)
+    select(data_id, sex, eng_prop = exposure_eng, oth_prop = exposure_fr)
 
   rbind(eng, fra) |>
     left_join(demog, by = "data_id") |>
     mutate(lang_grp = "eng_fra",
            data_src = "mitchell")
+}
+
+exclude_ppts <- function(admins) {
+  admins |> filter(eng_prop > 0, eng_prop < 100)
 }

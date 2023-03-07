@@ -40,6 +40,14 @@ eng_fra_pl_admins <- fetch_eng_fra_poulindubois_admins()
 eng_fra_mt_admins <- fetch_eng_fra_mitchell_admins()
 ```
 
+Exclude participants with zero language exposure
+```{r exclude,}
+eng_spa_mr_admins <- exclude_ppts(eng_spa_mr_admins)
+eng_spa_hf_admins <- exclude_ppts(eng_spa_hf_admins)
+eng_fra_pl_admins <- exclude_ppts(eng_fra_pl_admins)
+eng_fra_mt_admins <- exclude_ppts(eng_fra_mt_admins)
+```
+
 Get translation equivalent knowledge
 ```{r te}
 eng_spa_mr_admins <- add_trans_equiv(eng_spa_mr_admins)
@@ -97,7 +105,18 @@ hf_complete <- select_complete(hf_data)
 pl_complete <- select_complete(pl_data)
 mt_complete <- select_complete(mt_data)
 
-saveRDS(mr_complete, "outputs/mr_complete.rds")
+saveRDS(mr_complete, "outputs/mr_complete.RDS")
+saveRDS(hf_complete, "outputs/hf_complete.RDS")
+saveRDS(pl_complete, "outputs/pl_complete.RDS")
+saveRDS(mt_complete, "outputs/mt_complete.RDS")
+```
+
+Load from RDS
+```{r loading}
+mr_complete <- readRDS("outputs/mr_complete.RDS")
+hf_complete <- readRDS("outputs/hf_complete.RDS")
+pl_complete <- readRDS("outputs/pl_complete.RDS")
+mt_complete <- readRDS("outputs/mt_complete.RDS")
 ```
 
 ## Modelling
@@ -166,6 +185,8 @@ pl_mp_f <- get_model_posteriors(pl_model_full, "Eng-Fra (Poulin-Dubois)")
 mt_mp_f <- get_model_posteriors(mt_model_full, "Eng-Fra (Mitchell)")
 
 mp_f <- rbind(mr_mp_f, hf_mp_f, pl_mp_f, mt_mp_f)
+mp_f <- mp_f |> 
+  filter(!grepl("te_known0:overlap_t", Parameter))
 saveRDS(mp_f, "outputs/mp_f.rds")
 mp_f_plot <- plot_coefs(mp_f)
 ```
@@ -185,6 +206,8 @@ pl_mp_lc_full <- get_lc_models_posteriors(pl_lc_models_full, "Eng-Fra (Poulin-Du
 mt_mp_lc_full <- get_lc_models_posteriors(mt_lc_models_full, "Eng-Fra (Mitchell)")
 
 mp_lc_f <- rbind(mr_mp_lc_full, hf_mp_lc_full, pl_mp_lc_full, mt_mp_lc_full)
+mp_lc_f <- mp_lc_f |> 
+  filter(!grepl("te_known0:overlap_t", Parameter))
 saveRDS(mp_lc_f, "outputs/mp_lc_f.rds")
 ```
 

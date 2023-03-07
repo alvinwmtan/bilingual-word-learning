@@ -85,17 +85,19 @@ model_posteriors <- function(model) {
                      centrality = "all",
                      ci = .89,
                      ci_method = "hdi",
-                     test = c("pd", "rope", "bf"))
+                     test = c("pd", "rope", "bf"),
+                     rope_ci = .89)
 }
 
 fix_params <- function(mod_post, dataset_name, trans_te = FALSE, phon_sim_int = TRUE) {
   mod_post |>
     mutate(te = grepl("te_known", .data$Parameter),
            ps = grepl("overlap", .data$Parameter),
-           Effect = case_when(te & ps & phon_sim_int ~ "TE * Phon sim",
-                              te ~ "TE",
-                              ps & phon_sim_int ~ "Phon sim",
-                              TRUE ~ "Main"),
+           Effect = case_when(te & ps & phon_sim_int ~ "Effects with TE * Phon sim",
+                              te ~ "Effects with TE",
+                              ps & phon_sim_int ~ "Effects with Phon sim",
+                              TRUE ~ "Main effects") |>
+             fct_relevel("Main effects"),
            Predictor = case_when(grepl("age", .data$Parameter) ~ "Age",
                                  grepl("freq_t:lang_prop", .data$Parameter) ~ "Freq * exp",
                                  grepl("log_pf", .data$Parameter) ~ "Freq * exp",
@@ -104,7 +106,8 @@ fix_params <- function(mod_post, dataset_name, trans_te = FALSE, phon_sim_int = 
                                  grepl("concreteness", .data$Parameter) ~ "Concreteness",
                                  grepl("mlu", .data$Parameter) ~ "MLU-w",
                                  !phon_sim_int & ps ~ "Phon sim",
-                                 TRUE ~ "Intercept"),
+                                 TRUE ~ "Intercept / Main effect") |>
+             fct_inorder(),
            Dataset = dataset_name,
            Estimate = ifelse(trans_te & grepl("TE", .data$Effect), MAP*-2, MAP))
 }
@@ -126,7 +129,7 @@ get_lc_models_posteriors <- function(models, dataset_name) {
 }
 
 plot_coefs <- function(posteriors) {
-  ggplot(posteriors |> mutate(Predictor = fct_inorder(Predictor)),
+  ggplot(posteriors,
          aes(x = Estimate,
              y = fct_rev(Predictor),
              colour = Predictor)) +
