@@ -23,7 +23,6 @@ The first is that TEs provide a additional pathway to word learning when a child
 This would suggest a _two-route model_ of word learning in bilingual children. 
 The first route is the accumulation of input, as in the standard model. 
 The second route is cross-linguistic transfer between TEs, which is more likely to be employed when there is insufficient information from the first route, and may thus be less likely to be utilised when children are older and have enough information in each language. 
-Indeed, the lack of a direct TE knowledge main effect suggests that this second route is not generally in use if the first route is sufficient.
 However, if this were the case, we would also expect to see negative TE interaction effects for frequency, language exposure, and frequency by language exposure (or some combination thereof), since these also directly affect the amount of information received by a child for a given word.
 These effects do not reliably appear in our models, which weakens this explanation, although it is possible that the null results are due to noisy measurements or the lack of absolute metrics. 
 An important piece of future work would thus be to investigate this theory via experimental methods---for example, by employing a novel word learning paradigm where one word has a known TE and the other does not, varying the age of participants and the frequency of occurrence of the novel word.
@@ -74,7 +73,7 @@ There are many possible distributions of the language input received by bilingua
 These factors are crucial because they may result in differing distributions of words being learnt (e.g., some words may be more likely to appear in the home context, and would be more likely to be learnt in the home language). 
 Furthermore, greater variability in speaker and context has been found to improve word production [@goldenbergContextualVariationLanguage2022], suggesting that such contextual factors may be highly informative in understanding child word learning.
 The contribution of contextual variability may be somewhat lower in our datasets, however, given that the children are aged 0--4 years old, and may experience less variability in number of distinct contexts as opposed to older children.
-Regardless, this provides an impetus for more dense, naturalistic data collection, which can provide more accurate and rich metrics on each child's language input [see also @casillasLearningLanguageVivoinpress].
+Regardless, this provides an impetus for more dense, naturalistic data collection, which can provide more accurate and rich metrics on each child's language input [see also @casillasLearningLanguageVivo2023].
 
 Another key limitation is the lack of language representation in our datasets. 
 There are many fewer bilingual datasets available than comparable monolingual datasets [with reference to Wordbank; @frankWordbankOpenRepository2017], and many of the populations involved are convenience samples. 

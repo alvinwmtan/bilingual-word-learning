@@ -260,7 +260,7 @@ mp_f_mat <- mp_f |> select(Parameter, MAP, Dataset) |>
 ### Consistency.
 We additionally investigated the consistency in the Full Model predictor magnitude across the datasets to determine the extent to which different language combinations and data origins share similar factors affecting word knowledge. 
 The correlogram is shown in Figure \@ref(fig:cor-full).
-The mean pairwise correlation was `r (sum(mp_f_mat) - 4) / 12`, comparable to the production means found by Braginsky et al. (2019) for production data, supporting Hypothesis 5. 
+The mean pairwise correlation was `r (sum(mp_f_mat) - 4) / 12`, comparable to the means found by Braginsky et al. (2019) for production data, supporting Hypothesis 5. 
 
 (ref:cor-full-cap) Correlogram of predictor magnitudes for the Full Model across all datasets.
 ```{r cor-full, out.width="100%", fig.cap="(ref:cor-full-cap)"}

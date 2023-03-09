@@ -1,4 +1,4 @@
 Model,Predictors
 Base Model,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) + (1|child\_id) + (1|item\_id)}
 TE Model,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) * te\_known + (1|child\_id) + (1|item\_id)}
-Full Model,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) * te\_known * phon\_overlap + (1|child\_id) + (1|item\_id)}
+Full Model,\texttt{(age + frequency * prop\_exposure + concreteness + mlu) * (te\_known + te\_known : phon\_overlap) + (1|child\_id) + (1|item\_id)}

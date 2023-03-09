@@ -43,7 +43,7 @@ authornote: |
 abstract          : "(ref:abstract)"
   
 keywords          : "translation equivalents, bilingualism, word learning, standard model, baseline problem"
-wordcount         : "6935"
+wordcount         : "6886"
 note              : "\\clearpage"
 
 bibliography      : "index/bib/thesis.bib"
