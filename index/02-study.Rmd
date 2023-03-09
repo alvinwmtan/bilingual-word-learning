@@ -65,7 +65,7 @@ All numeric predictors were standardised (mean-centred and scaled).
 We dropped data points with missing data, retaining only complete cases.
 
 ## Modelling
-We first constructed the Base Model using word production as the outcome variable, and all input (age, language exposure,[^02-02] frequency) and word predictors (concreteness, MLU-w) as additive fixed effects, including the interaction between frequency and language exposure (operationalised as `log(raw_freq * prop_exposure)`).[^02-03]
+We first constructed the Base Model using word production as the outcome variable, and all input (age, language exposure,[^02-02] frequency) and word predictors (concreteness, MLU-w) as additive fixed effects, including the interaction between frequency and language exposure (operationalised as `log(raw_freq) * prop_exposure`).[^02-03]
 In the TE Model, we added TE knowledge as both an additive fixed effect, as well as interaction effects with all other predictors. 
 Finally, in the Full Model, we further added phonological similarity as an interaction effect with all predictor combinations that include TE knowledge. 
 We omitted interaction effects containing phonological similarity but not TE knowledge, since phonological similarity has no _a priori_ reason to affect word knowledge if the word's TE is not known.
