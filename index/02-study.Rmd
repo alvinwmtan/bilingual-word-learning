@@ -61,7 +61,7 @@ $$
 where 'sim' is phonological similarity, 'lev' is Levenshtein distance, 'max' is maximum, and 'len' is length in phonemes, as informed by @flocciaVocabularyYearOlds2018 and @fourtassiGrowthChildrenSemantic2020. 
 In the cases where one word was mapped to multiple TEs, we took the maximum phonological similarity score. 
 
-All numeric predictors were standardised (mean-centred and scaled), and TE knowledge was contrast coded as \{-0.5, 0.5\} for 'TE not known' and 'TE known' respectively. 
+All numeric predictors were standardised (mean-centred and scaled). 
 We dropped data points with missing data, retaining only complete cases.
 
 ## Modelling
@@ -87,7 +87,7 @@ Hence, we retained both main and interaction effect in our models.
 ```{r models, out.width="100%"}
 models <- read_csv("data/misc/models.csv", show_col_types = FALSE)
 models |> 
-  knitr::kable(caption = "List of models used in Study 3.", 
+  knitr::kable(caption = "List of models used.", 
                booktabs = T,
                escape = F) |> 
   kable_styling(font_size = 9,

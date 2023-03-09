@@ -34,11 +34,17 @@ authornote: |
   Alvin W. M. Tan, Department of Psychology, Stanford University, ORCID 0000-0001-5551-7507.
   Virginia A. Marchman, Department of Psychology, Stanford University, ORCID 0000-0001-7183-6743.
   Michael C. Frank, Department of Psychology, Stanford University, ORCID 0000-0002-7551-4378.
+  
+  Research in this paper was supported by the MacArthur–Bates Communicative Development Inventory Advisory Board.
+  The authors have no conflict of interest to disclose. 
+  
+  Data and code for this manuscript are available at \url{https://osf.io/5t6rb/?view_only=bc744c937ad843f789e7dfd5e0c8c6ad}. 
 
 abstract          : "(ref:abstract)"
   
 keywords          : "translation equivalents, bilingualism, word learning, standard model, baseline problem"
-# wordcount         : "X"
+wordcount         : "6935"
+note              : "\\clearpage"
 
 bibliography      : "index/bib/thesis.bib"
 annotate_references: no
@@ -55,7 +61,8 @@ footnotelist      : no
 mainfont          : "CMU Serif"
 
 classoption       : "man"
-output            : papaja::apa6_pdf
+always_allow_html : true
+output            : papaja::apa6_pdf # papaja::apa6_docx
 ---
 
 ```{r setup, include = FALSE}
