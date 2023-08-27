@@ -42,10 +42,11 @@ eng_fra_mt_admins <- fetch_eng_fra_mitchell_admins()
 
 Exclude participants with zero language exposure
 ```{r exclude,}
-eng_spa_mr_admins <- exclude_ppts(eng_spa_mr_admins)
-eng_spa_hf_admins <- exclude_ppts(eng_spa_hf_admins)
-eng_fra_pl_admins <- exclude_ppts(eng_fra_pl_admins)
-eng_fra_mt_admins <- exclude_ppts(eng_fra_mt_admins)
+threshold <- 10
+eng_spa_mr_admins <- exclude_ppts(eng_spa_mr_admins, threshold)
+eng_spa_hf_admins <- exclude_ppts(eng_spa_hf_admins, threshold)
+eng_fra_pl_admins <- exclude_ppts(eng_fra_pl_admins, threshold)
+eng_fra_mt_admins <- exclude_ppts(eng_fra_mt_admins, threshold)
 ```
 
 Get translation equivalent knowledge

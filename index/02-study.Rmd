@@ -8,26 +8,33 @@ datasets_small |>
   select(-Boys) |> 
   rename(`$N_P$ (boys)` = Ppts,
          `$N_A$` = Admins) |> 
-  knitr::kable(caption = "Descriptive statistics of datasets used, after excluding participants with zero exposure to either language. $N_P$: number of participants; $N_A$: number of administrations; Prop English: proportion of exposure to English.", 
+  knitr::kable(caption = "Descriptive statistics of datasets used, after excluding participants with <10% exposure to either language. $N_P$: number of participants; $N_A$: number of administrations; Prop English: proportion of exposure to English.", 
                booktabs = T,
                escape = F) |> 
+  kable_styling(font_size = 9,
+                htmltable_class = 'lightable-minimal')
+```
+
+```{r form-info, out.width="100%"}
+form_info <- read_csv("data/misc/form_info.csv", show_col_types = FALSE)
+form_info |> 
+  knitr::kable(caption = "Number of items and TEs on CDI forms used.",
+               booktabs = T) |> 
   kable_styling(font_size = 9,
                 htmltable_class = 'lightable-minimal')
 ```
 The data used in this study were vocabulary data collected using CDIs on bilingual populations. 
 Specifically, we used data from Words & Sentences forms, which measures children's productive vocabularies. 
 We used bilingual datasets from two origins: three datasets contributed to Wordbank [@frankWordbankOpenRepository2017; associated with @hoffDualLanguageExposure2012; @hoffWhatExplainsCorrelation2018; @legacyVocabularySizeSpeed2018; @marchmanLanguagespecificNatureGrammatical2004], and one dataset [associated with @mitchellCognatesAreAdvantaged2022] openly available on the Open Science Framework, with a total of `r datasets_small |> pull(admins_orig) |> sum() |> apa_num(format="d")` administrations from `r datasets_small |> pull(ppts_orig) |> sum() |> apa_num(format="d")` children.
-We included all children and administrations that were marked as 'bilingual' by the original authors, but excluded administrations from children who had zero exposure to one of their languages ($N_A$ = `r ((datasets_small |> pull(admins_orig) |> sum()) - (datasets_small |> pull(Admins) |> sum())) |> apa_num(format="d")`), resulting in a final sample of `r datasets_small |> pull(Admins) |> sum() |> apa_num(format="d")` administrations from `r datasets_small |> pull(Ppts) |> sum() |> apa_num(format="d")` children.[^02-01]
-The details of the datasets are shown in Table \@ref(tab:datasets-small). 
+These data were collected using the monolingual American English form and either the monolingual Mexican Spanish or the monolingual Quebecois French CDI form. 
+We included all children and administrations that were marked as 'bilingual' by the original authors, but excluded administrations from children who had <10% exposure to one of their languages ($N_A$ = `r ((datasets_small |> pull(admins_orig) |> sum()) - (datasets_small |> pull(Admins) |> sum())) |> apa_num(format="d")`), resulting in a final sample of `r datasets_small |> pull(Admins) |> sum() |> apa_num(format="d")` administrations from `r datasets_small |> pull(Ppts) |> sum() |> apa_num(format="d")` children.[^02-01]
+The details of the datasets are shown in Table \@ref(tab:datasets-small), and details about the forms used are show in Table \@ref(tab:form-info). 
 
-[^02-01]: The datasets have four details of note.
+[^02-01]: The datasets have three details of note.
 First, each child contributed at least two administrations (one in each language), but all datasets also included children who contributed administrations at multiple time points, explaining why $N_A$ is greater than twice $N_P$ for all datasets.
 Second, the datasets included children aged up to 49 months, which is beyond the age range that Words & Sentences CDI forms are designed for (viz. 18--36 months). 
 We included these children as (1) bilingual children tend to have smaller vocabularies in each language than their monolingual counterparts, which suggests that the CDI forms remain a viable instrument even for older bilingual children, and (2) our analyses primarily focus on item-level information, which remain valid for older bilingual children.
-Third, some children had low language exposures in one of their languages (<10%). 
-We also included these children as we did not have a specific theoretical stance on language exposure requirements for a child to be counted as bilingual, and accepted the original authors' judgements that these children were still counted as 'bilingual'. 
-Nonetheless, we were interested in children who had at least some exposure to two languages, and therefore excluded those who were only exposed to one language.
-Fourth, not all datasets included race and ethnicity information, so these have been omitted.
+Third, not all datasets included race and ethnicity information, so these have been omitted.
 
 ## Predictors
 Our list of predictors included both administration-level and word-level predictors. 
@@ -41,6 +48,8 @@ Different datasets employed different instruments to measure *language exposure*
 For example, a child might have 20% exposure to English and 80% exposure to Spanish.
 
 Data from CHILDES were retrieved using childes-db [@sanchezChildesdbFlexibleReproducible2019] via the `childesr` package [@braginskyChildesrAccessingCHILDES2022]; data processing code was adapted from @braginskyConsistencyVariabilityChildren2019. 
+We used all corpora for each language without filtering for bilingualism, as there is relatively little bilingual data in CHILDES. 
+While frequency distributions in bilingual input might differ somewhat, in general frequency distributions are relatively consistent across many different corpus types; the far greater amount of available monolingual data in CHILDES almost certainly outweighs the value of using bilingual-specific corpora. 
 For *frequency*, we derived unigram counts in CHILDES for the corresponding language. 
 Counts were normalised to the length of the corpus, Laplace smoothed, and log transformed. 
 For *MLU-w* for a given word, we calculated the mean length (in words) of all utterances containing the word, for all corpora of that language in CHILDES.
@@ -58,15 +67,19 @@ We then calculated the the phonological similarity using the equation:
 $$
 \textup{sim} = 1 - \frac{\textup{lev}(w_1, w_2)}{\textup{max}(\textup{len}(w_1), \textup{len}(w_2))}
 $$
-where 'sim' is phonological similarity, 'lev' is Levenshtein distance, 'max' is maximum, and 'len' is length in phonemes, as informed by @flocciaVocabularyYearOlds2018 and @fourtassiGrowthChildrenSemantic2020. 
+where 'sim' is phonological similarity, 'lev' is Levenshtein distance, 'max' is maximum, and 'len' is length in phonemes, a method derived from @flocciaVocabularyYearOlds2018 and @fourtassiGrowthChildrenSemantic2020. 
+For example, _animal_ <span style="font-variant:small-caps;">(eng)</span> and _animal_ <span style="font-variant:small-caps;">(spa)</span> have high phonological similarity, whereas _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span> have low phonological similarity. 
 In the cases where one word was mapped to multiple TEs, we took the maximum phonological similarity score. 
 
 All numeric predictors were standardised (mean-centred and scaled). 
 We dropped data points with missing data, retaining only complete cases.
 
 ## Modelling
+We constructed three models of increasing complexity, validating each model before proceeding to a more complex model. 
 We first constructed the Base Model using word production as the outcome variable, and all input (age, language exposure,[^02-02] frequency) and word predictors (concreteness, MLU-w) as additive fixed effects, including the interaction between frequency and language exposure (operationalised as `log(raw_freq) * prop_exposure`).[^02-03]
-In the TE Model, we added TE knowledge as both an additive fixed effect, as well as interaction effects with all other predictors. 
+This model served to replicate earlier effects (e.g., Frank et al., 2021) to demonstrate that this modelling strategy was effective in capturing known effects in word learning. 
+Next, in the TE Model, we added TE knowledge as both an additive fixed effect, as well as interaction effects with all other predictors. 
+This model allowed for the investigation of key questions around the role of translation equivalents in bilingual word learning. 
 Finally, in the Full Model, we further added phonological similarity as an interaction effect with all predictor combinations that include TE knowledge. 
 We omitted interaction effects containing phonological similarity but not TE knowledge, since phonological similarity has no _a priori_ reason to affect word knowledge if the word's TE is not known.
 For all models, we also fitted random intercepts for each child and each item.[^02-04] 
@@ -148,7 +161,8 @@ get_ul_preds <- function(data, model, unilemmas) {
            age_t, freq_t, lang_prop_t, concreteness_t, mlu_t, 
            te_known, language, lang_item_id, item_definition, uni_lemma,
            Estimate) |>
-    mutate(type = "raw")
+    mutate(type = "raw",
+           te_known = as.double(te_known))
   
   bind_rows(raw_data, predicted) |> 
     mutate(freq_t_binned = cut(freq_t, c(-Inf,-0.5,0,0.5,Inf)),
@@ -203,14 +217,18 @@ ggplot() +
 ```
 
 ## Base Model
+Bayesian modelling returns full posterior distributions for each coefficient; however, for ease of reporting, we describe each coefficient with its maximum a posteriori probability estimate (i.e., the value at which the posterior probability is greatest) and its 89% credible interval using highest density intervals (i.e., the smallest interval over the posterior which contains 89% of the probability density). 
+To summarise the four datasets, we took the mean over the estimates, and derived approximate credible intervals by taking the mean of the extents of the highest density intervals. 
+
+For equivalence testing (i.e., determining whether a parameter is “significant”), we used a region of practical equivalence (ROPE) of [–0.1, 0.1], as suggested by ###Kruschke & Liddell (2018)###. 
+If 95% of the credible interval lay within the ROPE, that parameter can be considered to have negligible magnitude. 
+
 ```{r data-base}
 mp_b <- readRDS("outputs/mp_b.rds")
 ```
 Figure \@ref(fig:coef-base) shows the coefficient estimates for each predictor in the Base Model across all datasets. 
-We found strong effects of most predictors in the expected directions: age ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_age_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_high) |> mean()`]), frequency ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_freq_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_high) |> mean()`]), proportion of exposure to the language ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_high) |> mean()`]), concreteness ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_high) |> mean()`]), and MLU-w ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_high) |> mean()`]).[^02-05]
+We found strong effects of most predictors in the expected directions: age ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_age_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_age_t") |> pull(CI_high) |> mean()`]), frequency ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_freq_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_freq_t") |> pull(CI_high) |> mean()`]), proportion of exposure to the language ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_lang_prop_t") |> pull(CI_high) |> mean()`]), concreteness ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_concreteness_t") |> pull(CI_high) |> mean()`]), and MLU-w ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_mlu_t") |> pull(CI_high) |> mean()`]).
 Interestingly, there was no reliable interaction effect between frequency and proportion exposure ($\bar\beta =$ `r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(Estimate) |> mean()`, 89\% CI [`r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(CI_low) |> mean()`, `r mp_b |> filter(Parameter == "b_freq_t:lang_prop_t") |> pull(CI_high) |> mean()`]). 
-
-[^02-05]: Estimates are means of maximum a posteriori probability estimates. Credible intervals were derived by taking the mean of the extents of the highest density intervals, and are approximate.
 
 (ref:coef-base-cap) Estimates of predictor coefficients for the Base Model fit on each dataset. Each point represents the coefficient for one dataset, and the bar displays the mean across all datasets. Filled points indicate coefficients with a Bayes factor of > 1000. The shaded area represents the region of practical equivalence to the null.
 ```{r coef-base, out.width='2.65in', out.height='2.5in', fig.width=4.41, fig.height=4.17, fig.align='center', fig.cap="(ref:coef-base-cap)"}
@@ -259,7 +277,7 @@ mp_f_mat <- mp_f |> select(Parameter, MAP, Dataset) |>
 
 ### Consistency.
 We additionally investigated the consistency in the Full Model predictor magnitude across the datasets to determine the extent to which different language combinations and data origins share similar factors affecting word knowledge. 
-The correlogram is shown in Figure \@ref(fig:cor-full).
+The correlogram is shown in Figure \@ref(fig:cor-full), which reflects the correlations of all predictor coefficients between datasets.
 The mean pairwise correlation was `r (sum(mp_f_mat) - 4) / 12`, comparable to the means found by Braginsky et al. (2019) for production data, supporting Hypothesis 5. 
 
 (ref:cor-full-cap) Correlogram of predictor magnitudes for the Full Model across all datasets.

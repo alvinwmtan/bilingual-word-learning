@@ -175,6 +175,6 @@ fetch_eng_fra_mitchell_admins <- function() {
            data_src = "mitchell")
 }
 
-exclude_ppts <- function(admins) {
-  admins |> filter(eng_prop > 0, eng_prop < 100)
+exclude_ppts <- function(admins, threshold = 0) {
+  admins |> filter(eng_prop > threshold, eng_prop < (100 - threshold))
 }

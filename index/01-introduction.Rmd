@@ -46,13 +46,15 @@ In the current work, we apply this approach originally developed for the monolin
 
 ## Translation equivalents: Methodological challenges
 The use of CDIs can be extended to bilingual children by administering two CDIs of two different languages [see @weislederUsingParentReport2022 for a scoping review].
+CDIs are typically adapted and normed for monolingual populations; there are few specifically bilingual forms (but see e.g., [@deandaPsychometricPropertiesEnglish2022; @otooleParentReportEarly2017] ###Reese et al., 2017### for CDI-based forms developed for bilinguals). 
+This gap means that the two-CDI approach tends to be the most accessible and most commonly used method of measuring bilingual children’s vocabularies, and has shown concurrent validity with laboratory measures in bilingual children (###Marchman & Martínez-Sussmann, 2002###).
 TE knowledge can then be assessed by measuring the conceptual overlap between the two forms, by mapping items on each form onto "universal lemmas", or "unilemmas" [see @braginskyConsistencyVariabilityChildren2019]; these are approximate cross-linguistic conceptual mappings of words, verified by the judgement of native or advanced proficient speakers of the language.
 For example, _dog_ <span style="font-variant:small-caps;">(eng)</span> and _perro_ <span style="font-variant:small-caps;">(spa)</span> map to the same unilemma, _<span style="font-variant:small-caps;">dog</span>_. 
 
 This two-CDI method has supported a range of findings about TEs, including the observation that older children have a greater proportion of TE pairs in their vocabularies [e.g., @davidIndividualDifferencesLexical2008; @woodsDevelopmentTranslationEquivalents2013].
 However, it is difficult to appropriately interpret this finding due to the _baseline problem_: CDIs are finite, and thus children who know a greater proportion of the words on each of the CDI forms (who tend to be older) are also directly likely to have a greater proportion of TE pairs simply by chance (i.e., as a random baseline). 
 Consider an idealised scenario of word learning with two key assumptions: (1) the probability of knowing any word (on the CDI) in language $i$ is uniformly $P_i$, and (2) word knowledge in a child's two languages are independent.
-In this case, the expected proportion of a bilingual child’s vocabulary composed of TE pairs is $\mathbb{E}(\textrm{\%TE}) = 2 P_1 P_2 \,/\, (P_1 + P_2)$.[^01-02]
+In this case, the expected proportion of a bilingual child’s vocabulary composed of TE pairs is $\mathbb{E}(\textrm{\%TE}) = 2 P_1 P_2 \,/\, (P_1 + P_2)$, assuming that all items on one CDI have a corresponding TE in the CDI of the other language.[^01-02]
 Then, as long as $P_1$ and $P_2$ are monotonically non-decreasing with age (which we assume to be true as long as a child is receiving input in the relevant language), $\mathbb{E}(\textrm{\%TE})$ would also be monotonically non-decreasing.[^01-03]
 In other words, just knowing more words means that, by chance, a higher proportion of them happen to be translation equivalents.
 Hence, simply observing an increase in proportion of TE pairs with age does not suggest that TEs play a particular role in bilingual word learning (e.g., whether children have more TE pairs compared to a meaningful baseline); instead, this observation could be merely an artifact of older children having larger vocabularies.
@@ -92,11 +94,12 @@ These results suggest that phonological similarity and lexical category may be i
 
 ## The current work
 In the present work, we adopt an alternative strategy to handle the baseline problem.
-We examine the role of TEs for individual words, estimating how knowing one word effects the probability of knowing its corresponding TE. 
-We can then determine whether age affects TE learning by exploring how the effect of TE knowledge changes with the age of the child.
-This item-based approach draws from previous work [@braginskyConsistencyVariabilityChildren2019; @goodmanDoesFrequencyCount2008] estimating item acquisition trajectories for individual words---i.e., the probability that a child knows a given word at a given age.
-This method controls for the age trajectory of each word independently, creating a baseline prediction about the acquisition of a particular word that can be modulated by the presence or absence of a TE. 
-Thus, this method directly addresses the baseline problem through the use of a statistical model that captures baseline acquisition probabilities. 
+We examine the role of TEs for individual words, rather than for vocabulary size totals, estimating how the probability of knowing a word is affected by the probability of knowing its corresponding TE. 
+We first model the age trajectory of each word independently, thereby, creating an unconditional prediction about the acquisition trajectory of a particular word that can be modulated by the presence or absence of a TE. 
+We can then determine the extent to which the effect of knowing a TE increases or decreases depending on the age of the child. 
+This item-based approach draws from previous work that estimates item acquisition trajectories for individual words---i.e., the probability that a child knows a given word at a given age [@braginskyConsistencyVariabilityChildren2019; @goodmanDoesFrequencyCount2008]. 
+Thus, this method directly addresses the baseline problem (i.e., the probability that a child knows more TEs simply because they know more words) through the use of a statistical model that predicts acquisition probabilities of individual words over age rather than predicting total vocabulary size. 
+A clear advantage of this approach is that it does not require the assumption that monolingual word learning norms provide a meaningful comparative reference for bilingual children [contra both @bilsonSemanticFacilitationBilingual2015; @tsuiAreTranslationEquivalents2022, see also ###Rothman et al., 2023###].
 We extend this approach to additionally capture individual differences (e.g., in language exposure) as well as TE-level differences (e.g., in phonological overlap), permitting the simultaneous examination of both child-level and item-level variability, and how both contribute to bilingual word learning.
 
 Once this model has been constructed, it is then possible to investigate variability across _groups_ of children and items---for example, examining how the role of TEs varies across different populations and language combinations, or across different item lexical categories.
@@ -112,14 +115,14 @@ We constructed our model by including input-related factors, including administr
 We also included factors relating to item difficulty, including semantic and syntactic variables previously demonstrated to influence word learning (concreteness and mean length of utterance in words (MLU-w)) [see @braginskyConsistencyVariabilityChildren2019]. 
 We examined the contribution of these variables, with the following hypotheses:
 
-1. Older children have better word knowledge, and greater frequency and language exposure predict better word knowledge, as does the interaction between them [as predicted by the standard model; see @kachergisStandardModelEarly2022]; and
-2. Higher concreteness and lower MLU-w predict better word knowledge [from previous age of acquisition modelling work, e.g., @braginskyConsistencyVariabilityChildren2019].
+1. Older children have greater likelihood of word production, and greater frequency and language exposure predict greater likelihood of word production, as does the interaction between them [as predicted by the standard model; see @kachergisStandardModelEarly2022]; and
+2. Higher concreteness and lower MLU-w predict greater likelihood of word production [from previous age of acquisition modelling work, e.g., @braginskyConsistencyVariabilityChildren2019].
 
 Once this model was established, we could then approach our main goal of understanding the role of TEs.
 We added TE knowledge and phonological similarity as additional predictive variables to determine if they explained some of the variance in bilingual word knowledge, with the following hypotheses:
 
 3. Knowing a word predicts knowing its corresponding TE [due to previous results about TE knowledge, e.g., @anayaIdentifyingImpactWord2021; @grassoCrossLinguisticCognateProduction2018]; and 
-4. Greater phonological similarity predicts better word knowledge when the word's TE is known [based on studies suggesting that phonologically similar TEs are learnt earlier, e.g., @mitchellCognatesAreAdvantaged2022; @umbelMeasuringBilingualChildren1992].
+4. Greater phonological similarity predicts greater likelihood of word production when the word's TE is known [based on studies suggesting that phonologically similar TEs are learnt earlier, e.g., @mitchellCognatesAreAdvantaged2022; @umbelMeasuringBilingualChildren1992].
 
 We then conducted additional analyses to consider how these effects would hold across populations and across lexical categories, with the following hypotheses:
 
