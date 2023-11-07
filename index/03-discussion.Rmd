@@ -24,7 +24,7 @@ These results corroborate those from @tsuiAreTranslationEquivalents2022, who fou
 It is also important to recognise that the environment may also contribute to TE knowledge.
 Children learning two languages in the same environmental context may be more likely to learn both words in a TE pair simply because there is a consistent set of objects, actions, and events being referred to in the language(s) spoken by the child's caregivers. 
 For example, a bilingual child with a toy giraffe may have a higher baseline likelihood of learning the word for _<span style="font-variant:small-caps;">giraffe</span>_ in both languages, as compared to another child who did not have such a toy, since caregivers are more likely to refer to the giraffe regardless of which language they are speaking. 
-Indeed, Clerkin et al. (2017) showed that words referring to more frequently seen objects were also more likely to be learnt earlier, and this effect may apply across both languages for a bilingual child. 
+Indeed, @clerkinRealworldVisualStatistics2017 showed that words referring to more frequently seen objects were also more likely to be learnt earlier, and this effect may apply across both languages for a bilingual child. 
 While this may explain some of the advantage associated with TE knowledge, it is less likely to explain the interaction effect between TE knowledge and other predictors, to which we now turn our attention.
 
 There are a few possible explanations for the relation between age and probability of TE learning.
