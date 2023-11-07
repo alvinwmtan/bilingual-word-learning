@@ -8,26 +8,34 @@ options(digits=3)
 # Discussion
 In this study, we assessed the role of translation equivalents in bilingual word learning. 
 While previous work has suffered from a baseline problem---the fact that larger vocabularies contain more TE pairs simply by chance---we avoided this problem by using an item-level modelling approach. 
-Across four datasets, we found that TE pairs were more likely to be known by children than predicted by a base model including age, frequency, language exposure, concreteness, and MLU-w. 
+Across four datasets, we found that TE pairs were more likely to be known by children beyond the probabilities that were determined in a base model including age, frequency, language exposure, concreteness, and MLU-w. 
 This effect was larger for younger children and for TEs that were more phonologically similar.
-These findings support the theory that young bilingual children partially bootstrap early word learning in one of their languages through their knowledge of the other.
+These findings support the proposed theory that young bilingual children partially bootstrap early word learning in one of their languages through their knowledge of the other.
 
 ## Bilingual word learning and TEs
 What role do TEs play in bilingual word learning? 
 By modelling word production at the by-item level, we found that knowing a word increases the likelihood of knowing its corresponding TE, and particularly so for younger children, supporting Hypothesis 3. 
-These findings suggest that TEs provide an additional source of linguistic information for younger children, allowing them to bootstrap their word learning via cross-linguistic transfer.
+These findings suggest that TEs could provide an additional source of linguistic information for younger children, allowing them to bootstrap their word learning via cross-linguistic transfer.
 For example, knowing one word may imply having a conceptual representation for that word as well as a concept–label mapping. 
 This conceptual representation may be shared by two TEs, such that learning the corresponding TE may only require learning a new label and attaching it to the existing concept. 
 The advantage associated with this bootstrapping process would then depend on the difficulty of acquiring the target concept (which could itself change with development). 
-These results also corroborate those from @tsuiAreTranslationEquivalents2022, who found that children with smaller vocabulary sizes (who tend to be younger) have a preference towards acquiring TEs relative to the expected values, whereas children with larger vocabulary sizes (who tend to be older) are neutral with regard to TEs.
+These results corroborate those from @tsuiAreTranslationEquivalents2022, who found that children with smaller vocabulary sizes (who tend to be younger) have a preference towards acquiring TEs relative to the expected values, whereas children with larger vocabulary sizes (who tend to be older) are neutral with regard to TEs.
+
+It is also important to recognise that the environment may also contribute to TE knowledge.
+Children learning two languages in the same environmental context may be more likely to learn both words in a TE pair simply because there is a consistent set of objects, actions, and events being referred to in the language(s) spoken by the child's caregivers. 
+For example, a bilingual child with a toy giraffe may have a higher baseline likelihood of learning the word for _<span style="font-variant:small-caps;">giraffe</span>_ in both languages, as compared to another child who did not have such a toy, since caregivers are more likely to refer to the giraffe regardless of which language they are speaking. 
+Indeed, Clerkin et al. (2017) showed that words referring to more frequently seen objects were also more likely to be learnt earlier, and this effect may apply across both languages for a bilingual child. 
+While this may explain some of the advantage associated with TE knowledge, it is less likely to explain the interaction effect between TE knowledge and other predictors, to which we now turn our attention.
 
 There are a few possible explanations for the relation between age and probability of TE learning.
 The first is that TEs provide a additional pathway to word learning when a child has accumulated less information about a word (as younger children have heard less language input overall).
 This would suggest a _two-route model_ of word learning in bilingual children. 
 The first route is the accumulation of input, as in the standard model. 
-The second route is cross-linguistic transfer between TEs, which is more likely to be employed when there is insufficient information from the first route, and may thus be less likely to be utilised when children are older and have enough information in each language. 
+The second route is cross-linguistic transfer between TEs.
+This route may be more likely to be employed when there is insufficient information from the first route, and may thus be less likely to be utilised when children are older and have enough information in each language. 
 However, if this were the case, we would also expect to see negative TE interaction effects for frequency, language exposure, and frequency by language exposure (or some combination thereof), since these also directly affect the amount of information received by a child for a given word.
-These effects do not reliably appear in our models, which weakens this explanation, although it is possible that the null results are due to noisy measurements or the lack of absolute metrics. 
+These effects do not reliably appear in our models, which weakens this explanation.
+It is possible that the null results are due to noisy measurements or the lack of absolute metrics. 
 An important piece of future work would thus be to investigate this theory via experimental methods---for example, by employing a novel word learning paradigm where one word has a known TE and the other does not, varying the age of participants and the frequency of occurrence of the novel word.
 
 An alternative explanation is that bilingual children have lexica with more closely shared representations when they are younger, while increasing experience and age result in more separable representation structures.
@@ -36,8 +44,8 @@ This hypothesis aligns with models of bilingual lexica as self-organising maps [
 One corollary of this explanation would be that younger bilingual children are more susceptible to cross-linguistic priming than older bilingual children, since their cross-linguistic representations are closer in some representational space.
 However, evidence from priming studies with bilingual children [e.g., @deandaLexicalSemanticDevelopmentBilingual2020; @flocciaVocabularyYearOlds2018] has suggested that there is no significant effect in this direction.
 These studies may have been underpowered to detect such an effect, though, and thus larger studies are needed to verify whether there is in fact any effect of age on cross-linguistic priming.
-It is also important to note that bilingual infants do seem to be able to discriminate between the two languages that they are exposed to from an early age (e.g., ###Bosch & Sebastián-Gallés, 2001; Byers-Heinlein et al., 2017; Molnar et al., 2013; Morini & Newman, 2019; Schott et al., 2021###). 
-This implies that infants have some level of understanding about language categories and are aware that some words belong to particular language categories, although longitudinal research remains necessary to measure the robustness of such categories over early development (see also ###Byers-Heinlein, 2014###).
+It is also important to note that bilingual infants do seem to be able to discriminate between the two languages that they are exposed to from an early age [e.g., @boschEvidenceEarlyLanguage2001; @byers-heinleinBilingualInfantsControl2017; @molnarWithinrhythmClassNative2014; @moriniDondeEstaBall2019; @schottFinetuningLanguageDiscrimination2021]. 
+This ability implies that infants have some level of understanding about language categories and are aware that some words belong to particular language categories, although longitudinal research remains necessary to measure the robustness of such categories over early development [see also @byers-heinleinLanguagesCategoriesReframing2014].
 
 The results also support the existence of a phonological similarity advantage in TE learning, as found by @mitchellCognatesAreAdvantaged2022 among others: TE knowledge gives a greater boost when the TEs are more similar phonologically, affirming Hypothesis 4. 
 This finding also aligns with work by @flocciaVocabularyYearOlds2018, who examined the role of phonological overlap at the by-language level, finding that bilingual children who spoke languages that had higher phonological overlap with British English also produced more words in that language [see also @gampeDoesLinguisticSimilarity2021 for a similar study]. 
@@ -45,17 +53,17 @@ Such findings also raise interesting questions about whether these TE pairs have
 Some evidence towards this hypothesis comes from previous work on what is termed the "cognate facilitation effect", which suggests that phonological similarity improves lexical processing [e.g., @shengRobustDemonstrationCognate2016; @squiresFactorsInfluencingCognate2020; @vonholzenImpactCrosslanguagePhonological2019]. 
 This hypothesis may imply that bilingual children are better able to bootstrap their word learning when both semantic and phonological representations are more similar. 
 
-Our continuous measure of phonological similarity contrasts somewhat with research into the cognate facilitation effect, which often uses categorical descriptions of cognacy. 
-Indeed, there is mixed evidence around the best characterisation of this phenomenon, with some studies having found significant differences between form-identical and merely form-similar TEs (e.g., ###Bosch & Ramon-Casas, 2014), whereas other studies have demonstrated a more graded effect that depends on the degree of similarity (e.g., ###Bosma et al., 2016). 
-It is possible that the effect of phonological similarity may be nonlinear (even if not entirely categorical), and a more detailed understanding of this phenomenon may require further studies involving TEs of a wide range of phonological similarities.
-
-Additionally, it is important to note that some of the phonological similarity effect may be driven by measurement uncertainty, as it may be difficult for a caregiver to accurately attribute a child’s production to one language or the other in the case when the phonological forms are very similar. 
+It is important to note that some of the phonological similarity effect may be driven by measurement uncertainty, as it may be difficult for a caregiver to accurately attribute a child’s production to one language or the other in the case when the phonological forms are very similar. 
 Such confusion could result in an overestimation of TE knowledge for TEs that have higher phonological similarity. 
 This effect may also interact with age, as older children tend to produce longer utterances, allowing for the utterance language to be more accurately identified. 
-One potential way to disentangle this issue would be to use comprehension as a metric, such that the language of the surrounding context determines the language of the target word (e.g., "Can you find the _animal_?" vs. "¿Puedes encontrar al _animal_?"); paradigms such as that from ###Byers-Heinlein et al., 2017### can thus be used to determine whether the child has the lexical item in their corresponding lexicon.
+One potential way to disentangle this issue would be to use comprehension as a metric, such that the language of the surrounding context determines the language of the target word (e.g., "Can you find the _animal_?" vs. "¿Puedes encontrar al _animal_?"); paradigms such as that from @byers-heinleinBilingualInfantsControl2017 can thus be used to determine whether the child has the lexical item in their corresponding lexicon.
+
+Additionally, our continuous measure of phonological similarity contrasts somewhat with research into the cognate facilitation effect, which often uses categorical descriptions of cognacy. 
+Indeed, there is mixed evidence around the best characterisation of this phenomenon, with some studies having found significant differences between form-identical and merely form-similar TEs [e.g., @boschFirstTranslationEquivalents2014], whereas other studies have demonstrated a more graded effect that depends on the degree of similarity [e.g., @bosmaLongitudinalStudyGradual2019]. 
+It is possible that the effect of phonological similarity may be nonlinear (even if not entirely categorical), and a more detailed understanding of this phenomenon may require further studies involving TEs of a wide range of phonological similarities.
 
 Furthermore, we found that some of the interaction effects with TE knowledge varied across lexical categories: the age-by-TE interaction was strongest for verbs, the frequency-by-TE interaction was positive for adjectives, and the phonological similarity-by-TE interaction was positive for nouns. 
-These findings extend those from previous studies on monolingual children which have found that items from different lexical categories are learnt at different rates (e.g., Chapter 11 of ###Frank et al., 2021###), and corroborate findings in adults suggesting that organisation and retrieval of lexical items in bilinguals may differ by lexical category (e.g., ###Faroqi-Shah et al., 2021###). 
+These findings extend those from previous studies on monolingual children which have found that items from different lexical categories are learnt at different rates (e.g., Chapter 11 of @frankVariabilityConsistencyEarly2021), and corroborate findings in adults suggesting that organisation and retrieval of lexical items in bilinguals may differ by lexical category [e.g., @faroqi-shahLexicalCategoryDifferences2021]. 
 As all of the languages in our sample are Indo-European, it is difficult to determine how much the effects are reflective of grammatical similarities between the children’s two languages, rather than language-independent facts about the concepts underlying items of different lexical categories; further research using more typologically diverse languages is needed to measure the effect of typological distance.
 
 ## Bilingual word learning and the standard model
@@ -67,23 +75,27 @@ One interesting point of deviation from the predictions of the standard model is
 Under the standard model, we can model the proportion of a word's occurrence in a child's language input as the product of frequency and proportion of language exposure to a given language. 
 We would thus expect differences in the role of frequency for children with different levels of exposure to a given language. 
 However, no such effect was reliably observed. 
-One possible reason for this non-effect is that amount of language input does not linearly relate to word knowledge; indeed, this is partially borne out by the observation that the significant predictor of frequency was log-transformed.
+One possible reason for this non-effect is that amount of language input does not linearly relate to word knowledge [see also @sander-montantMoreTheyHear2023]; indeed, this is partially borne out by the observation that the significant predictor of frequency was log-transformed.
 Such a nonlinearity would imply that a different specification of the interaction effect may be required to properly demonstrate the interaction between frequency and language exposure.
 Another explanation may be that input-related factors are titrated by total amount of linguistic input received by the child (i.e., the important metric is _expected number of tokens_ of a word).
 Our proportion of exposure measures reflected only relative exposure, not the absolute amount of language that a child hears. 
 Thus, the available input-related measures may not have been sensitive enough to pick up the expected interaction effects [see @marchmanCaregiverTalkYoung2017].
-These explanations are not mutually exclusive, and further investigation into the relation between language input and word learning is imperative to better determine the validity of the present result; for example, studies that use dense recordings to give more exact, absolute metrics on a child's language input may be more sensitive to smaller effects of input-related factors.
+These explanations are not mutually exclusive, and further investigation into the relation between language input and word learning is imperative to better determine the validity of the present result.
+For example, studies that use dense recordings to give more exact, absolute metrics on a child's language input may be more sensitive to smaller effects of input-related factors.
 
 The results also suggest that factors affecting word learning in the monolingual context [see @braginskyConsistencyVariabilityChildren2019] also have a similar effect in the bilingual context, including concreteness and MLU-w, providing support for Hypotheses 2. 
 These factors relate to the variability in difficulty across words in the standard model, such that words that are more abstract and that occur in more syntactically complex sentences are more challenging and thus learned later. 
 These findings are reinforced by the result that the effects of such variability are relatively consistent across datasets, suggesting that at a high level, the factors affecting lexical acquisition are similar across monolingual and bilingual populations.
 
 ## Limitations
-There are a number of limitations regarding the data employed in the present work.
+There are a number of limitations regarding the data analysed in the present work.
 The first is shared by other similar modelling work, which is that the vocabulary data, language input data, and psycholinguistic rating data are derived from different groups of individuals, which limits the variability that can be captured between children. 
 Secondly, the different CDIs are designed as _adaptations_, rather than direct translations; thus, different versions of the instrument have different items, and therefore, not all items on one form have a corresponding TE on the other form. 
 Since we excluded items that did not have a corresponding TE, this meant that different items were excluded for different language combinations, leading to a lack of systematicity in which items were retained. 
 Notably, recent work [@deandaPsychometricPropertiesEnglish2022] has suggested that using two independent CDIs (that have been adapted for use with monolingual children) underestimates the number and proportion of TEs in bilingual children's vocabularies, as compared with a single assessment tool designed for bilingual use (i.e., forms in which all items listed in one language have a corresponding TE in the other language). 
+At the same time, more generally, parent report data may tend to overestimate the number of TEs that children produce, as reporters may have difficulty reporting on a child's knowledge in one language independently of their knowledge of the other language.
+Use of different reporters for each of the child's languages may help reduce these reporter effects.
+It would also be helpful to explore TE knowledge using experimental methods that do not rely on caregiver judgments---for example, using comprehension tasks such as the looking-while-listening paradigm [@fernaldUsingEyeMovements2008].
 Nevertheless, the strong consistent effects of our predictors suggest that these limitations may not have as large an impact on the results of the analyses.
 
 Additionally, although we included language exposure as a predictor, it is a coarse description of bilingual children's actual language experiences.
@@ -91,13 +103,13 @@ There are many possible distributions of the language input received by bilingua
 It is also possible that the use of particular words in a given language may vary across contexts---for example, a family may be more likely to talk about specific activities or concepts in language A vs. language B. 
 In this case, variability in contexts of language use would decrease the number of opportunities for a child to learn TEs. 
 Moreover, parental language usage patterns may also change over the course of their children's development [@mancilla-martinezLanguageMinorityLearners2010].
-These factors are crucial because they may result in differing distributions of words being learnt (e.g., some words may be more likely to appear in the home context, and would be more likely to be learnt in the home language). 
+These factors are crucial because they may result in differing distributions of words being learnt (e.g., some words may be more likely to appear in the home context, and would be more likely to be learnt in the home language than other words). 
 Furthermore, greater variability in speaker and context has been found to improve word production [@goldenbergContextualVariationLanguage2022], suggesting that such contextual factors may be highly informative in understanding child word learning.
 The contribution of contextual variability may be somewhat lower in our datasets, however, given that the children are aged 0--4 years old, and may experience less variability in number of distinct contexts as opposed to older children.
 Regardless, this provides an impetus for more dense, naturalistic data collection, which can provide more accurate and rich metrics on each child's language input [see also @casillasLearningLanguageVivo2023].
 
 Another key limitation is the lack of language representation in our datasets. 
-There are fewer bilingual datasets available than comparable monolingual datasets [with reference to Wordbank; @frankWordbankOpenRepository2017], and many of the populations involved are convenience samples. 
+There are fewer bilingual datasets available than comparable monolingual datasets [with reference to Wordbank, @frankWordbankOpenRepository2017], and many of the populations involved are convenience samples. 
 In particular, all datasets included English as one of the languages spoken by participants, and only included two languages other than English, namely Spanish and French.
 The small number of languages limits the generalisability of the findings, although we suspect that the two-route model and relevant results still hold for other language combinations, since at least some of the results (particularly those from the Full Model) accounted for the effect of phonological similarity. 
 

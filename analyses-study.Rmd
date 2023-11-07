@@ -40,7 +40,7 @@ eng_fra_pl_admins <- fetch_eng_fra_poulindubois_admins()
 eng_fra_mt_admins <- fetch_eng_fra_mitchell_admins()
 ```
 
-Exclude participants with zero language exposure
+Exclude participants with <10% language exposure
 ```{r exclude,}
 threshold <- 10
 eng_spa_mr_admins <- exclude_ppts(eng_spa_mr_admins, threshold)

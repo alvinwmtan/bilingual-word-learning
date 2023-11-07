@@ -33,7 +33,8 @@ transform_data <- function(df,
                     "te_known", "lang_item_id"), as.factor),
            language = `contrasts<-`(language,
                   value = language |> unique() |> length() |> contr.sum()),
-           te_known = `contrasts<-`(te_known, value = -0.5 * contr.sum(2)))
+           #te_known = `contrasts<-`(te_known, value = -0.5 * contr.sum(2))
+           te_known = `contrasts<-`(te_known, value = contr.treatment(2)))
 }
 
 retransform <- function(target, source) {
